@@ -13,7 +13,7 @@ export default function Home() {
   const HOTSPOTS = [
     {
       id: 1,
-      top: "30%",
+      top: "22%",
       left: "35%",
       label: "모니터 조명",
       questions: ["장시간 앉아도 편한가요?", "헤드레스트 조절 되나요?", "바퀴 소음은 없나요?"]
