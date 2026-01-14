@@ -244,6 +244,7 @@ export default function Home() {
                 </div>
                 <h3 className="font-serif text-xl text-slate-800">합리적인 취향의 발견</h3>
              </div>
+             <button className="text-xs text-slate-400 font-medium">더보기</button>
           </div>
           
           <div className="grid gap-4">
