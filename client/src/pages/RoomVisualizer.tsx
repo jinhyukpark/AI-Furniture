@@ -1,7 +1,7 @@
 import { MobileLayout } from "@/components/MobileLayout";
 import { spaceConcept, products } from "@/lib/data";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, Share2, Heart, ShoppingBag, Sparkles, MessageCircle, Send, X } from "lucide-react";
+import { ArrowLeft, Share2, Heart, ShoppingBag, Sparkles, MessageCircle, Send, X, ChevronRight } from "lucide-react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -61,7 +61,12 @@ export default function RoomVisualizer() {
                   
                   {/* Body */}
                   <div className="p-4">
-                    <h4 className="font-bold text-base mb-1">{item.name}</h4>
+                    <div className="flex items-center justify-between mb-1">
+                      <h4 className="font-bold text-base flex items-center gap-1 cursor-pointer hover:text-primary transition-colors group">
+                        {item.name}
+                        <ChevronRight size={16} className="text-slate-400 group-hover:text-primary" />
+                      </h4>
+                    </div>
                     <p className="text-xs text-muted-foreground mb-4">이 제품에 대해 무엇이든 물어보세요.</p>
                     
                     <div className="space-y-2 mb-4">
