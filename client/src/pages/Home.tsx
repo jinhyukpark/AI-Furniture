@@ -55,7 +55,22 @@ export default function Home() {
           className="w-full h-full object-cover"
           onClick={() => setActiveHotspot(null)}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-transparent pointer-events-none" />
+        
+        {/* Emotional Copy */}
+        <div className="absolute top-8 left-6 z-10 pointer-events-none">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+          >
+            <h2 className="text-white text-2xl font-light leading-relaxed drop-shadow-md">
+              <span className="font-serif italic opacity-90">편안함</span>과 <br />
+              영원한 <span className="font-serif italic opacity-90">감성</span>을<br />
+              <span className="font-bold">선물합니다.</span>
+            </h2>
+          </motion.div>
+        </div>
         
         {/* Hotspots */}
         {HOTSPOTS.map((hotspot) => (
