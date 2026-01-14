@@ -2,13 +2,23 @@ import { useState } from "react";
 import { MobileLayout } from "@/components/MobileLayout";
 import { ProductCard } from "@/components/ProductCard";
 import { products } from "@/lib/data";
-import { Search, Bell, Moon, ArrowRight, Sparkles, X, MessageCircle, Send } from "lucide-react";
+import { Search, Bell, Moon, ArrowRight, Sparkles, X, MessageCircle, Send, ChevronLeft, ChevronRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Home() {
   const [activeHotspot, setActiveHotspot] = useState<number | null>(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const heroImages = products.slice(0, 4).map(p => p.image);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + heroImages.length) % heroImages.length);
+  };
 
   const HOTSPOTS = [
     {
@@ -47,13 +57,21 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Hero Image (Main Product Image) - Full Width */}
-      <div className="relative aspect-[4/5] w-full bg-slate-100 overflow-hidden">
-        <img 
-          src={products[0].image} 
-          alt="Main Hero" 
-          className="w-full h-full object-cover"
-        />
+      {/* Hero Image Carousel */}
+      <div className="relative aspect-[4/5] w-full bg-slate-100 overflow-hidden group">
+        <AnimatePresence mode="wait">
+          <motion.img 
+            key={currentSlide}
+            src={heroImages[currentSlide]} 
+            alt="Main Hero" 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="w-full h-full object-cover absolute inset-0"
+          />
+        </AnimatePresence>
+        
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
         
         <div className="absolute bottom-10 right-6 z-10 pointer-events-none text-right">
@@ -69,6 +87,29 @@ export default function Home() {
             </h2>
           </motion.div>
         </div>
+      </div>
+      
+      {/* Carousel Controls */}
+      <div className="bg-white border-b py-3 flex items-center justify-center gap-6">
+        <button onClick={prevSlide} className="text-slate-400 hover:text-slate-800 transition-colors p-1">
+          <ChevronLeft size={20} />
+        </button>
+        <div className="flex gap-2">
+          {heroImages.map((_, idx) => (
+            <button 
+              key={idx}
+              onClick={() => setCurrentSlide(idx)}
+              className={`transition-all duration-300 rounded-full ${
+                currentSlide === idx 
+                  ? "w-6 h-1.5 bg-primary" 
+                  : "w-1.5 h-1.5 bg-slate-300 hover:bg-slate-400"
+              }`}
+            />
+          ))}
+        </div>
+        <button onClick={nextSlide} className="text-slate-400 hover:text-slate-800 transition-colors p-1">
+          <ChevronRight size={20} />
+        </button>
       </div>
 
       {/* Main Content */}
