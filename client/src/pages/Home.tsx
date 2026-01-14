@@ -111,7 +111,7 @@ export default function Home() {
         {/* AI Curator Promo Banner */}
         <button 
           onClick={() => window.location.href='/chat'}
-          className="w-full bg-white border border-slate-100 rounded-2xl p-4 mb-8 flex items-center justify-between group shadow-lg shadow-slate-200/50 hover:shadow-xl hover:shadow-slate-200/60 transition-all -mt-12 relative z-30"
+          className="w-full bg-white border border-slate-100 rounded-2xl p-4 mb-8 flex items-center justify-between group shadow-sm hover:shadow-md transition-all"
         >
           <div className="flex items-center gap-3">
              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-300">
