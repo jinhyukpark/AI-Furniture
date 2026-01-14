@@ -30,8 +30,8 @@ export default function Exhibition() {
           </div>
         </Link>
 
-        <div className="space-y-4">
-          <h3 className="font-bold text-lg">지난 기획전</h3>
+        <div className="space-y-4 mt-8">
+          <h3 className="text-lg font-medium text-foreground mb-4">지난 기획전</h3>
           {[1, 2].map((i) => (
             <div key={i} className="aspect-[2/1] bg-slate-100 rounded-xl flex items-center justify-center text-slate-400 text-sm">
               종료된 기획전입니다

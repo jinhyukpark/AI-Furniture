@@ -251,6 +251,34 @@ export default function ChatAssistant() {
                     </div>
                   </div>
                 )}
+                
+                {/* Suggested Questions - Attached to the welcome message (id: "1") */}
+                {msg.id === "1" && msg.role === "assistant" && (
+                   <div className="mt-4 space-y-2">
+                     <div className="flex gap-2 flex-wrap">
+                       {suggestedQuestions.slice(0, 3).map((q, idx) => (
+                         <button
+                           key={idx}
+                           onClick={() => handleSend(q)}
+                           className="bg-white border border-slate-200 rounded-2xl px-3 py-2 text-[11px] font-medium text-slate-600 hover:bg-slate-50 hover:text-primary transition-all duration-300 text-left"
+                         >
+                           {q}
+                         </button>
+                       ))}
+                     </div>
+                     <div className="flex gap-2 flex-wrap">
+                       {suggestedQuestions.slice(3, 5).map((q, idx) => (
+                         <button
+                           key={idx + 3}
+                           onClick={() => handleSend(q)}
+                           className="bg-white border border-slate-200 rounded-2xl px-3 py-2 text-[11px] font-medium text-slate-600 hover:bg-slate-50 hover:text-primary transition-all duration-300 text-left"
+                         >
+                           {q}
+                         </button>
+                       ))}
+                     </div>
+                   </div>
+                )}
               </div>
             </motion.div>
           ))}
@@ -267,32 +295,6 @@ export default function ChatAssistant() {
             </div>
           )}
           <div ref={messagesEndRef} />
-        </div>
-
-        {/* Suggested Questions (2 Rows: 3 top, 2 bottom) */}
-        <div className="px-4 pb-4 space-y-2">
-          <div className="flex gap-2 justify-center">
-            {suggestedQuestions.slice(0, 3).map((q, idx) => (
-              <button
-                key={idx}
-                onClick={() => handleSend(q)}
-                className="bg-white/80 backdrop-blur-sm shadow-sm border border-slate-100 rounded-2xl px-3 py-2 text-[11px] font-medium text-slate-600 hover:bg-white hover:text-primary hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 truncate max-w-[32%]"
-              >
-                {q}
-              </button>
-            ))}
-          </div>
-          <div className="flex gap-2 justify-center">
-            {suggestedQuestions.slice(3, 5).map((q, idx) => (
-              <button
-                key={idx + 3}
-                onClick={() => handleSend(q)}
-                className="bg-white/80 backdrop-blur-sm shadow-sm border border-slate-100 rounded-2xl px-4 py-2 text-[11px] font-medium text-slate-600 hover:bg-white hover:text-primary hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
-              >
-                {q}
-              </button>
-            ))}
-          </div>
         </div>
 
         {/* Input Area */}
