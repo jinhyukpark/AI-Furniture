@@ -9,6 +9,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import cozyOfficeImage from "@assets/generated_images/cozy_evening_home_office_desk.png";
+import brightWorkspaceImage from "@assets/generated_images/bright_creative_workspace_desk.png";
 
 export default function ProductDetail() {
   const [match, params] = useRoute("/product/:id");
@@ -60,6 +63,13 @@ export default function ProductDetail() {
     setLocation("/chat");
   };
 
+  // Prepare images for carousel
+  const productImages = [
+    { src: product.image, type: "original" },
+    { src: cozyOfficeImage, type: "ai" },
+    { src: brightWorkspaceImage, type: "ai" }
+  ];
+
   return (
     <MobileLayout>
       <div className="relative min-h-screen bg-white pb-24">
@@ -109,76 +119,107 @@ export default function ProductDetail() {
           </div>
         </div>
 
-        {/* Hero Image with Interactive Hotspots */}
+        {/* Hero Image Carousel */}
         <div className="relative aspect-[4/5] bg-slate-100">
-          <img 
-            src={product.image} 
-            alt={product.name} 
-            className="w-full h-full object-cover"
-          />
-
-          {/* Interactive Popups for ID 1 */}
-          {interactiveItems.map((item) => (
-            <Popover key={item.id} open={openPopoverId === item.id} onOpenChange={(open) => setOpenPopoverId(open ? item.id : null)}>
-              <PopoverTrigger asChild>
-                <button
-                  className="absolute w-8 h-8 -ml-4 -mt-4 rounded-full bg-white/20 backdrop-blur-md border border-white/60 flex items-center justify-center text-white shadow-[0_0_15px_rgba(255,255,255,0.5)] z-20 hover:scale-110 transition-transform cursor-pointer group"
-                  style={{ left: `${item.x}%`, top: `${item.y}%` }}
-                >
-                  <Sparkles size={14} className="fill-white animate-pulse" />
-                  <div className="absolute inset-0 rounded-full bg-white/30 animate-ping duration-[2000ms]" />
-                </button>
-              </PopoverTrigger>
-              <PopoverContent 
-                className="w-[260px] p-0 bg-white/95 backdrop-blur-xl border-none shadow-2xl rounded-2xl overflow-hidden z-50 animate-in zoom-in-95 duration-200" 
-                side="bottom"
-                sideOffset={10}
-                align="center"
-              >
-                <div className="relative">
-                  {/* Header */}
-                  <div className="px-4 py-3 bg-gradient-to-r from-primary/10 to-transparent border-b border-slate-100 flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <Sparkles size={14} className="text-primary fill-current" />
-                      <span className="font-bold text-sm text-primary">AI 큐레이터</span>
-                    </div>
-                    <button onClick={() => setOpenPopoverId(null)} className="text-slate-400 hover:text-slate-600">
-                      <X size={16} />
-                    </button>
-                  </div>
-                  
-                  {/* Body */}
-                  <div className="p-4">
-                    <h4 className="font-bold text-base mb-1">{item.name}</h4>
-                    <p className="text-xs text-muted-foreground mb-4">이 제품에 대해 궁금한 점을 알려주세요.</p>
+          <Carousel className="w-full h-full">
+            <CarouselContent className="h-full">
+              {productImages.map((img, index) => (
+                <CarouselItem key={index} className="h-full pl-0">
+                  <div className="relative w-full h-full aspect-[4/5]">
+                    <img 
+                      src={img.src} 
+                      alt={`${product.name} ${index + 1}`} 
+                      className="w-full h-full object-cover"
+                    />
                     
-                    <div className="space-y-2 mb-4">
-                      {item.questions.map((q, idx) => (
-                        <button 
-                          key={idx}
-                          className="w-full text-left px-3 py-2 rounded-lg bg-slate-50 hover:bg-slate-100 text-xs text-slate-700 transition-colors flex items-center justify-between group"
-                        >
-                          <span>{q}</span>
-                          <MessageCircle size={12} className="text-slate-300 group-hover:text-primary transition-colors" />
-                        </button>
-                      ))}
-                    </div>
+                    {/* AI Generated Badge */}
+                    {img.type === "ai" && (
+                      <div className="absolute top-20 left-4 z-20">
+                         <Badge className="bg-black/50 backdrop-blur-md border-none text-white hover:bg-black/60 gap-1.5 pl-1.5 pr-2.5 py-1">
+                          <div className="w-4 h-4 rounded-full bg-primary flex items-center justify-center">
+                            <Sparkles size={10} className="text-white fill-current" />
+                          </div>
+                          AI 연출됨
+                        </Badge>
+                      </div>
+                    )}
 
-                    <div className="relative">
-                      <input 
-                        type="text" 
-                        placeholder="직접 질문 입력하기..." 
-                        className="w-full pl-3 pr-9 py-2 rounded-full bg-slate-50 border border-slate-200 text-xs focus:outline-none focus:border-primary/50 transition-colors"
-                      />
-                      <button className="absolute right-1 top-1 w-7 h-7 rounded-full bg-primary flex items-center justify-center text-white hover:bg-primary/90 transition-colors">
-                        <Send size={12} />
-                      </button>
-                    </div>
+                    {/* Interactive Popups (Only on first image) */}
+                    {index === 0 && interactiveItems.map((item) => (
+                      <Popover key={item.id} open={openPopoverId === item.id} onOpenChange={(open) => setOpenPopoverId(open ? item.id : null)}>
+                        <PopoverTrigger asChild>
+                          <button
+                            className="absolute w-8 h-8 -ml-4 -mt-4 rounded-full bg-white/20 backdrop-blur-md border border-white/60 flex items-center justify-center text-white shadow-[0_0_15px_rgba(255,255,255,0.5)] z-20 hover:scale-110 transition-transform cursor-pointer group"
+                            style={{ left: `${item.x}%`, top: `${item.y}%` }}
+                          >
+                            <Sparkles size={14} className="fill-white animate-pulse" />
+                            <div className="absolute inset-0 rounded-full bg-white/30 animate-ping duration-[2000ms]" />
+                          </button>
+                        </PopoverTrigger>
+                        <PopoverContent 
+                          className="w-[260px] p-0 bg-white/95 backdrop-blur-xl border-none shadow-2xl rounded-2xl overflow-hidden z-50 animate-in zoom-in-95 duration-200" 
+                          side="bottom"
+                          sideOffset={10}
+                          align="center"
+                        >
+                          <div className="relative">
+                            {/* Header */}
+                            <div className="px-4 py-3 bg-gradient-to-r from-primary/10 to-transparent border-b border-slate-100 flex items-center justify-between">
+                              <div className="flex items-center gap-2">
+                                <Sparkles size={14} className="text-primary fill-current" />
+                                <span className="font-bold text-sm text-primary">AI 큐레이터</span>
+                              </div>
+                              <button onClick={() => setOpenPopoverId(null)} className="text-slate-400 hover:text-slate-600">
+                                <X size={16} />
+                              </button>
+                            </div>
+                            
+                            {/* Body */}
+                            <div className="p-4">
+                              <h4 className="font-bold text-base mb-1">{item.name}</h4>
+                              <p className="text-xs text-muted-foreground mb-4">이 제품에 대해 궁금한 점을 알려주세요.</p>
+                              
+                              <div className="space-y-2 mb-4">
+                                {item.questions.map((q, idx) => (
+                                  <button 
+                                    key={idx}
+                                    className="w-full text-left px-3 py-2 rounded-lg bg-slate-50 hover:bg-slate-100 text-xs text-slate-700 transition-colors flex items-center justify-between group"
+                                  >
+                                    <span>{q}</span>
+                                    <MessageCircle size={12} className="text-slate-300 group-hover:text-primary transition-colors" />
+                                  </button>
+                                ))}
+                              </div>
+
+                              <div className="relative">
+                                <input 
+                                  type="text" 
+                                  placeholder="직접 질문 입력하기..." 
+                                  className="w-full pl-3 pr-9 py-2 rounded-full bg-slate-50 border border-slate-200 text-xs focus:outline-none focus:border-primary/50 transition-colors"
+                                />
+                                <button className="absolute right-1 top-1 w-7 h-7 rounded-full bg-primary flex items-center justify-center text-white hover:bg-primary/90 transition-colors">
+                                  <Send size={12} />
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </PopoverContent>
+                      </Popover>
+                    ))}
                   </div>
-                </div>
-              </PopoverContent>
-            </Popover>
-          ))}
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            {/* Custom Carousel Navigation */}
+            <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-20">
+               {productImages.map((_, idx) => (
+                 <div key={idx} className="w-1.5 h-1.5 rounded-full bg-white/50 data-[active=true]:bg-white data-[active=true]:w-4 transition-all" />
+               ))}
+            </div>
+            {/* Note: I'm not adding standard arrows as mobile usually swipes, but standard indicators would be good. 
+                Using simple dots logic would require context access, for now rely on swipe. 
+                Added fake dots for visual cue. */}
+          </Carousel>
         </div>
 
         {/* Content Container */}
