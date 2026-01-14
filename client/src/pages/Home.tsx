@@ -121,9 +121,9 @@ export default function Home() {
              <div className="text-left">
                 <div className="text-[10px] font-bold text-rose-500 mb-0.5 flex items-center gap-1">
                   <span className="inline-block w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse shadow-[0_0_8px_rgba(244,63,94,0.6)]" />
-                  놓치면 손해!
+                  지금 놓치면 절대안되는 !
                 </div>
-                <div className="font-bold text-slate-800 text-sm">AI 큐레이터가 추천 큐레이팅</div>
+                <div className="font-bold text-slate-800 text-sm">고객님이 좋아할만한 큐레이팅 상품들을 소개합니다.</div>
              </div>
           </div>
           <div className="w-8 h-8 rounded-full bg-white shadow-sm border border-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all relative z-10">
