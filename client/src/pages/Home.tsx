@@ -111,21 +111,22 @@ export default function Home() {
         {/* AI Curator Promo Banner */}
         <button 
           onClick={() => window.location.href='/chat'}
-          className="w-full bg-white border border-slate-100 rounded-2xl p-4 mb-8 flex items-center justify-between group shadow-sm hover:shadow-md transition-all"
+          className="w-full bg-gradient-to-r from-primary/5 via-white to-primary/5 border border-primary/20 rounded-2xl p-4 mb-8 flex items-center justify-between group shadow-sm hover:shadow-md transition-all relative overflow-hidden"
         >
-          <div className="flex items-center gap-3">
-             <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-300">
-                <Sparkles size={20} className="fill-current" />
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+          <div className="flex items-center gap-3 relative z-10">
+             <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-300 shadow-inner">
+                <Sparkles size={20} className="fill-current drop-shadow-sm" />
              </div>
              <div className="text-left">
                 <div className="text-[10px] font-bold text-rose-500 mb-0.5 flex items-center gap-1">
-                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse" />
+                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse shadow-[0_0_8px_rgba(244,63,94,0.6)]" />
                   놓치면 손해!
                 </div>
                 <div className="font-bold text-slate-800 text-sm">AI 큐레이터가 추천 큐레이팅</div>
              </div>
           </div>
-          <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+          <div className="w-8 h-8 rounded-full bg-white shadow-sm border border-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all relative z-10">
             <ArrowRight size={16} />
           </div>
         </button>
