@@ -64,9 +64,9 @@ export default function Home() {
             transition={{ delay: 0.2, duration: 0.8 }}
           >
             <h2 className="text-white text-2xl font-light leading-relaxed drop-shadow-md">
-              <span className="font-serif italic opacity-90">편안함</span>과 <br />
-              영원한 <span className="font-serif italic opacity-90">감성</span>을<br />
-              <span className="font-bold">선물합니다.</span>
+              머무는 것만으로도<br />
+              <span className="font-serif italic opacity-90">영감</span>이 되는<br />
+              <span className="font-bold">공간의 미학.</span>
             </h2>
           </motion.div>
         </div>
