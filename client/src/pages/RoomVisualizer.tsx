@@ -48,7 +48,7 @@ export default function RoomVisualizer() {
         </div>
 
         {/* Content */}
-        <div className="p-6 -mt-6 bg-white rounded-t-3xl relative z-20">
+        <div className="p-6 -mt-6 bg-white rounded-t-2xl relative z-20">
           <div className="w-12 h-1 bg-slate-200 rounded-full mx-auto mb-6"></div>
           
           <div className="flex justify-between items-end mb-6">
@@ -68,7 +68,7 @@ export default function RoomVisualizer() {
               if (!product) return null;
 
               return (
-                <div key={product.id} className="flex gap-4 p-3 rounded-2xl border border-slate-100 shadow-sm bg-white">
+                <div key={product.id} className="flex gap-4 p-3 rounded-xl border border-slate-100 shadow-sm bg-white">
                   <div className="w-20 h-20 rounded-xl overflow-hidden bg-slate-100 shrink-0">
                     <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
                   </div>

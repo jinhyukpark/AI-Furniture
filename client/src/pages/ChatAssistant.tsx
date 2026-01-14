@@ -131,7 +131,7 @@ export default function ChatAssistant() {
               key={msg.id} 
               className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
             >
-              <div className={`max-w-[80%] rounded-2xl p-3 text-sm shadow-sm ${
+              <div className={`max-w-[80%] rounded-xl p-3 text-sm shadow-sm ${
                 msg.role === "user" 
                   ? "bg-primary text-white rounded-br-none" 
                   : "bg-white text-foreground rounded-bl-none border"
@@ -196,7 +196,7 @@ export default function ChatAssistant() {
           ))}
           {isTyping && (
             <div className="flex justify-start">
-              <div className="bg-white rounded-2xl rounded-bl-none p-3 shadow-sm border">
+              <div className="bg-white rounded-xl rounded-bl-none p-3 shadow-sm border">
                 <div className="flex gap-1">
                   <span className="w-1.5 h-1.5 bg-muted-foreground/40 rounded-full animate-bounce"></span>
                   <span className="w-1.5 h-1.5 bg-muted-foreground/40 rounded-full animate-bounce delay-75"></span>

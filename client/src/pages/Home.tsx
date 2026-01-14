@@ -43,7 +43,7 @@ export default function Home() {
       {/* Main Content */}
       <div className="p-4 space-y-8">
         {/* Hero / Promo */}
-        <div className="relative rounded-3xl overflow-hidden bg-primary aspect-[2/1] shadow-lg">
+        <div className="relative rounded-2xl overflow-hidden bg-primary aspect-[2/1] shadow-lg">
           <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/40 z-10 p-6 flex flex-col justify-center text-white">
             <Badge className="w-fit mb-2 bg-white/20 hover:bg-white/30 text-white border-none">AI 신기능</Badge>
             <h2 className="text-2xl font-bold leading-tight mb-2">꿈꾸던 공간을<br/>디자인해보세요</h2>
@@ -69,7 +69,7 @@ export default function Home() {
         </div>
         
         {/* Editorial Section */}
-        <div className="bg-secondary/50 rounded-2xl p-6">
+        <div className="bg-secondary/50 rounded-xl p-6">
           <h3 className="font-serif text-xl font-medium mb-2">에디터의 픽</h3>
           <p className="text-sm text-muted-foreground mb-4">모던 미니멀리스트 홈을 위한 엄선된 컬렉션.</p>
           <div className="h-32 bg-white rounded-xl flex items-center justify-center text-muted-foreground text-sm border border-dashed">

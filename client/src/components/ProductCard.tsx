@@ -18,7 +18,7 @@ export function ProductCard({ product, onClick }: ProductCardProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       whileTap={{ scale: 0.98 }}
-      className="group relative bg-card rounded-2xl overflow-hidden shadow-sm border border-border/50"
+      className="group relative bg-card rounded-xl overflow-hidden shadow-sm border border-border/50"
       onClick={onClick}
     >
       <div className="aspect-square relative overflow-hidden bg-muted">
