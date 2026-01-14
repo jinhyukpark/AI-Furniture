@@ -6,12 +6,12 @@ export function MobileLayout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
 
   return (
-    <div className="min-h-screen bg-background pb-24 font-sans">
-      <main className="max-w-md mx-auto bg-white min-h-screen shadow-2xl overflow-hidden relative">
+    <div className="min-h-screen bg-background font-sans">
+      <main className="max-w-md mx-auto bg-white min-h-screen shadow-2xl overflow-hidden relative pb-24">
         {children}
       </main>
       
-      <nav className="fixed bottom-0 left-0 right-0 z-50 max-w-md mx-auto pointer-events-none">
+      <nav className="fixed bottom-0 left-0 right-0 z-[100] max-w-md mx-auto pointer-events-none">
         {/* Shadow gradient for the navbar - HIDDEN on /chat */}
         {location !== "/chat" && (
           <div className="absolute bottom-0 w-full h-24 bg-gradient-to-t from-white via-white to-transparent pointer-events-none" />
