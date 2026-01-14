@@ -7,6 +7,8 @@ import bedroomImage from '@assets/stock_images/cozy_bedroom_with_be_4819121e.jpg
 import livingImage from '@assets/stock_images/modern_living_room_w_32e2ad7a.jpg';
 import diningImage from '@assets/stock_images/white_dining_room_wi_e1e8f705.jpg';
 import shelfImage from '@assets/stock_images/modern_black_metal_d_a0872bda.jpg';
+import storeImage from '@assets/stock_images/modern_furniture_sto_22d0d210.jpg';
+import refurbImage from '@assets/stock_images/furniture_outlet_sto_c429467b.jpg';
 import { Badge } from "@/components/ui/badge";
 import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
@@ -364,25 +366,31 @@ export default function Home() {
         {/* Quick Links: Store & Refurb */}
         <div className="grid grid-cols-2 gap-3 px-2 pb-8 mt-6">
           <Link href="/store">
-            <div className="bg-slate-50 rounded-xl p-4 flex flex-col items-center justify-center gap-2 cursor-pointer hover:bg-slate-100 transition-colors h-28 border border-slate-100">
-              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-slate-700 shadow-sm mb-1">
-                <MapPin size={18} strokeWidth={2} />
-              </div>
-              <div className="text-center">
-                <div className="text-sm font-bold text-slate-900">Store</div>
-                <div className="text-[10px] text-slate-500">매장안내</div>
+            <div className="relative rounded-xl p-4 flex flex-col items-center justify-center gap-1 cursor-pointer overflow-hidden h-28 group">
+              <img src={storeImage} alt="Store" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors" />
+              
+              <div className="relative z-10 text-center text-white">
+                <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center mx-auto mb-2 text-white border border-white/30">
+                  <MapPin size={16} strokeWidth={2} />
+                </div>
+                <div className="text-sm font-bold">Store</div>
+                <div className="text-[10px] opacity-90">매장안내</div>
               </div>
             </div>
           </Link>
           
           <Link href="/refurb">
-            <div className="bg-slate-50 rounded-xl p-4 flex flex-col items-center justify-center gap-2 cursor-pointer hover:bg-slate-100 transition-colors h-28 border border-slate-100">
-              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-slate-700 shadow-sm mb-1">
-                <Tag size={18} strokeWidth={2} />
-              </div>
-              <div className="text-center">
-                <div className="text-sm font-bold text-slate-900">Refurb</div>
-                <div className="text-[10px] text-slate-500">전시품 판매</div>
+            <div className="relative rounded-xl p-4 flex flex-col items-center justify-center gap-1 cursor-pointer overflow-hidden h-28 group">
+              <img src={refurbImage} alt="Refurb" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors" />
+              
+              <div className="relative z-10 text-center text-white">
+                <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center mx-auto mb-2 text-white border border-white/30">
+                  <Tag size={16} strokeWidth={2} />
+                </div>
+                <div className="text-sm font-bold">Refurb</div>
+                <div className="text-[10px] opacity-90">전시품 판매</div>
               </div>
             </div>
           </Link>
