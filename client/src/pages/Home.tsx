@@ -55,9 +55,9 @@ export default function Home() {
           className="w-full h-full object-cover"
           onClick={() => setActiveHotspot(null)}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
         
-        <div className="absolute top-8 right-6 z-10 pointer-events-none text-right">
+        <div className="absolute bottom-10 right-6 z-10 pointer-events-none text-right">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
