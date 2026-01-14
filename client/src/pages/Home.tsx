@@ -62,9 +62,9 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
           >
-            <h2 className="text-white text-2xl font-light leading-relaxed drop-shadow-md">
+            <h2 className="text-white text-2xl font-serif italic leading-relaxed drop-shadow-md">
               머무는 것만으로도<br />
-              <span className="font-serif italic opacity-90">영감</span>이 되는<br />
+              영감이 되는<br />
               <span className="font-bold">공간의 미학.</span>
             </h2>
           </motion.div>
