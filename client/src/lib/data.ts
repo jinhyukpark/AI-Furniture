@@ -1,5 +1,5 @@
 import deskImage from '@assets/generated_images/modern_minimalist_white_desk_for_home_office.png';
-import sofaImage from '@assets/generated_images/comfortable_beige_fabric_sofa.png';
+import bookshelfImage from '@assets/generated_images/modern_white_bookshelf_with_decor.png';
 import kidsBedImage from '@assets/generated_images/modern_kids_single_bed_white_wood.png';
 import spaceRoomImage from '@assets/generated_images/space_themed_kids_bedroom_with_modern_furniture.png';
 
@@ -15,12 +15,12 @@ export const products = [
   },
   {
     id: 2,
-    name: "코펜하겐 소파",
-    price: 890000,
-    category: "거실",
-    image: sofaImage,
-    description: "북유럽 스타일의 패브릭 소파. 발수 및 오염 방지 기능이 포함되어 있습니다.",
-    features: ["아쿠아클린 패브릭", "모듈형 디자인", "고밀도 폼"]
+    name: "에디 화이트 책장",
+    price: 189000,
+    category: "서재",
+    image: bookshelfImage,
+    description: "깔끔한 화이트 톤의 5단 책장입니다. 넉넉한 수납공간과 미니멀한 디자인.",
+    features: ["E0 등급 목재", "견고한 선반", "모던 디자인"]
   },
   {
     id: 3,
