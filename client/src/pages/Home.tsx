@@ -130,7 +130,7 @@ export default function Home() {
                    <Sparkles size={14} className="text-primary" />
                    <span className="text-xs font-bold text-primary uppercase tracking-wider">AI Curator</span>
                 </div>
-                <h3 className="font-serif text-xl text-slate-800">합리적인 <span className="italic">취향</span>의 발견</h3>
+                <h3 className="font-serif text-xl text-slate-800">합리적인 취향의 발견</h3>
              </div>
           </div>
           
