@@ -53,6 +53,12 @@ export default function ProductDetail() {
             <ArrowLeft size={20} />
           </button>
           <div className="flex gap-2">
+            <button 
+              onClick={handlePick}
+              className={`w-10 h-10 rounded-full bg-white/80 backdrop-blur-md shadow-sm flex items-center justify-center transition-colors ${isPicked ? "text-primary bg-primary/10" : "text-foreground hover:bg-white"}`}
+            >
+              <Heart size={20} className={isPicked ? "fill-current" : ""} />
+            </button>
             <button className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-md shadow-sm flex items-center justify-center text-foreground hover:bg-white transition-colors">
               <Share2 size={20} />
             </button>
