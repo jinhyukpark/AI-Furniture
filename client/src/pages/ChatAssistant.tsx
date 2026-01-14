@@ -186,100 +186,102 @@ export default function ChatAssistant() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               key={msg.id} 
-              className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+              className="flex flex-col w-full mb-4"
             >
-              <div className={`max-w-[85%] rounded-2xl p-3 text-sm shadow-sm ${
-                msg.role === "user" 
-                  ? "bg-primary text-white rounded-br-sm" 
-                  : "bg-white text-slate-800 rounded-bl-sm border border-slate-100"
-              }`}>
-                {msg.content}
+              <div className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
+                <div className={`max-w-[85%] rounded-2xl p-3 text-sm shadow-sm ${
+                  msg.role === "user" 
+                    ? "bg-primary text-white rounded-br-sm" 
+                    : "bg-white text-slate-800 rounded-bl-sm border border-slate-100"
+                }`}>
+                  {msg.content}
 
-                {/* Suggestion Chips in Chat */}
-                {msg.type === "suggestion" && (
-                  <button 
-                    className="mt-3 w-full bg-primary/10 hover:bg-primary/20 text-primary border border-primary/20 rounded-xl p-2 flex items-center justify-center gap-2 transition-colors"
-                  >
-                    <Sparkles size={14} />
-                    <span className="font-medium">{msg.data.label}</span>
-                  </button>
-                )}
+                  {/* Suggestion Chips in Chat */}
+                  {msg.type === "suggestion" && (
+                    <button 
+                      className="mt-3 w-full bg-primary/10 hover:bg-primary/20 text-primary border border-primary/20 rounded-xl p-2 flex items-center justify-center gap-2 transition-colors"
+                    >
+                      <Sparkles size={14} />
+                      <span className="font-medium">{msg.data.label}</span>
+                    </button>
+                  )}
 
-                {/* Quotation Card */}
-                {msg.type === "quotation" && (
-                  <div className="mt-3 bg-slate-50 rounded-xl p-3 border border-slate-200">
-                    <div className="flex items-center gap-2 mb-3 font-bold text-slate-800 border-b border-slate-200 pb-2">
-                      <FileText size={14} className="text-primary" />
-                      예상 견적서
-                    </div>
-                    <div className="space-y-2 mb-3">
-                      {products.slice(0, 3).map((p) => (
-                        <div key={p.id} className="flex justify-between text-xs text-slate-600">
-                          <span className="truncate max-w-[120px]">{p.name}</span>
-                          <span>{p.price.toLocaleString()}원</span>
-                        </div>
-                      ))}
-                      <div className="flex justify-between text-xs text-slate-500 pt-1">
-                        <span>배송/설치비</span>
-                        <span>무료</span>
+                  {/* Quotation Card */}
+                  {msg.type === "quotation" && (
+                    <div className="mt-3 bg-slate-50 rounded-xl p-3 border border-slate-200">
+                      <div className="flex items-center gap-2 mb-3 font-bold text-slate-800 border-b border-slate-200 pb-2">
+                        <FileText size={14} className="text-primary" />
+                        예상 견적서
                       </div>
-                      <div className="border-t border-slate-200 pt-2 mt-1 flex justify-between font-bold text-primary text-sm">
-                        <span>총 합계</span>
-                        <span>{(products.slice(0, 3).reduce((acc, p) => acc + p.price, 0)).toLocaleString()}원</span>
-                      </div>
-                    </div>
-                    <Button size="sm" className="w-full text-xs h-9 rounded-lg font-bold" onClick={() => setLocation("/market")}>
-                      장바구니 담기
-                    </Button>
-                  </div>
-                )}
-
-                {/* Visual Card */}
-                {msg.type === "visual" && (
-                  <div className="mt-3 overflow-hidden rounded-xl border border-slate-200 bg-slate-50 group cursor-pointer" onClick={() => setLocation("/room/1")}>
-                    <div className="aspect-video relative">
-                       <img src={msg.data.image} alt="Room" className="object-cover w-full h-full" />
-                       <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors flex items-center justify-center">
-                          <div className="bg-white/90 backdrop-blur-md rounded-full px-3 py-1.5 text-xs font-bold flex items-center gap-1.5 shadow-lg text-primary">
-                            <ImageIcon size={12} /> 3D 룸 구경하기 <ArrowRight size={10} />
+                      <div className="space-y-2 mb-3">
+                        {products.slice(0, 3).map((p) => (
+                          <div key={p.id} className="flex justify-between text-xs text-slate-600">
+                            <span className="truncate max-w-[120px]">{p.name}</span>
+                            <span>{p.price.toLocaleString()}원</span>
                           </div>
-                       </div>
+                        ))}
+                        <div className="flex justify-between text-xs text-slate-500 pt-1">
+                          <span>배송/설치비</span>
+                          <span>무료</span>
+                        </div>
+                        <div className="border-t border-slate-200 pt-2 mt-1 flex justify-between font-bold text-primary text-sm">
+                          <span>총 합계</span>
+                          <span>{(products.slice(0, 3).reduce((acc, p) => acc + p.price, 0)).toLocaleString()}원</span>
+                        </div>
+                      </div>
+                      <Button size="sm" className="w-full text-xs h-9 rounded-lg font-bold" onClick={() => setLocation("/market")}>
+                        장바구니 담기
+                      </Button>
                     </div>
-                    <div className="p-3 bg-white">
-                      <div className="font-bold text-xs text-slate-800 mb-1">{msg.data.title}</div>
-                      <div className="text-[10px] text-slate-500 line-clamp-2 leading-relaxed">{msg.data.description}</div>
+                  )}
+
+                  {/* Visual Card */}
+                  {msg.type === "visual" && (
+                    <div className="mt-3 overflow-hidden rounded-xl border border-slate-200 bg-slate-50 group cursor-pointer" onClick={() => setLocation("/room/1")}>
+                      <div className="aspect-video relative">
+                         <img src={msg.data.image} alt="Room" className="object-cover w-full h-full" />
+                         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                            <div className="bg-white/90 backdrop-blur-md rounded-full px-3 py-1.5 text-xs font-bold flex items-center gap-1.5 shadow-lg text-primary">
+                              <ImageIcon size={12} /> 3D 룸 구경하기 <ArrowRight size={10} />
+                            </div>
+                         </div>
+                      </div>
+                      <div className="p-3 bg-white">
+                        <div className="font-bold text-xs text-slate-800 mb-1">{msg.data.title}</div>
+                        <div className="text-[10px] text-slate-500 line-clamp-2 leading-relaxed">{msg.data.description}</div>
+                      </div>
                     </div>
-                  </div>
-                )}
-                
-                {/* Suggested Questions - Attached to the welcome message (id: "1") */}
-                {msg.id === "1" && msg.role === "assistant" && (
-                   <div className="mt-4 space-y-2">
-                     <div className="flex gap-2 flex-wrap">
-                       {suggestedQuestions.slice(0, 3).map((q, idx) => (
-                         <button
-                           key={idx}
-                           onClick={() => handleSend(q)}
-                           className="bg-white border border-slate-200 rounded-2xl px-3 py-2 text-[11px] font-medium text-slate-600 hover:bg-slate-50 hover:text-primary transition-all duration-300 text-left"
-                         >
-                           {q}
-                         </button>
-                       ))}
-                     </div>
-                     <div className="flex gap-2 flex-wrap">
-                       {suggestedQuestions.slice(3, 5).map((q, idx) => (
-                         <button
-                           key={idx + 3}
-                           onClick={() => handleSend(q)}
-                           className="bg-white border border-slate-200 rounded-2xl px-3 py-2 text-[11px] font-medium text-slate-600 hover:bg-slate-50 hover:text-primary transition-all duration-300 text-left"
-                         >
-                           {q}
-                         </button>
-                       ))}
-                     </div>
-                   </div>
-                )}
+                  )}
+                </div>
               </div>
+              
+              {/* Suggested Questions - Attached to the welcome message (id: "1") */}
+              {msg.id === "1" && msg.role === "assistant" && (
+                 <div className="mt-3 space-y-2 px-1">
+                   <div className="flex gap-2 flex-wrap">
+                     {suggestedQuestions.slice(0, 3).map((q, idx) => (
+                       <button
+                         key={idx}
+                         onClick={() => handleSend(q)}
+                         className="bg-white border border-slate-200 rounded-full px-4 py-2 text-[12px] font-medium text-slate-600 hover:bg-slate-50 hover:text-primary hover:border-primary/30 transition-all duration-300 text-left shadow-sm"
+                       >
+                         {q}
+                       </button>
+                     ))}
+                   </div>
+                   <div className="flex gap-2 flex-wrap">
+                     {suggestedQuestions.slice(3, 5).map((q, idx) => (
+                       <button
+                         key={idx + 3}
+                         onClick={() => handleSend(q)}
+                         className="bg-white border border-slate-200 rounded-full px-4 py-2 text-[12px] font-medium text-slate-600 hover:bg-slate-50 hover:text-primary hover:border-primary/30 transition-all duration-300 text-left shadow-sm"
+                       >
+                         {q}
+                       </button>
+                     ))}
+                   </div>
+                 </div>
+              )}
             </motion.div>
           ))}
           
