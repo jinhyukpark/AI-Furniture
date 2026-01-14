@@ -116,10 +116,10 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
           <div className="flex items-center justify-between w-full relative z-10 px-1">
              <div className="text-left">
-                <div className="text-xs font-bold text-rose-500 mb-0.5 flex items-center gap-1">
-                  지금 놓치면 후회하는
+                <div className="text-xs font-medium text-rose-500 mb-1">
+                  더 많은 혜택 받아가세요
                 </div>
-                <div className="font-bold text-slate-800 text-sm">AI 가 추천하는 큐레이팅 상품을 소개합니다.</div>
+                <div className="font-bold text-slate-900 text-lg leading-tight">박진혁님만을 위한<br/>큐레이팅 상품</div>
              </div>
              <div className="text-primary group-hover:scale-110 transition-transform duration-300 flex-shrink-0 ml-3">
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className="drop-shadow-sm">
