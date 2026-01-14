@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { MobileLayout } from "@/components/MobileLayout";
 import { ProductCard } from "@/components/ProductCard";
-import { products } from "@/lib/data";
+import { products, spaceConcept } from "@/lib/data";
 import { Search, Bell, Moon, Star, ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "wouter";
@@ -41,9 +41,27 @@ export default function Home() {
         </div>
       </header>
 
+      {/* Hero Image (Main Product Image) - Full Width */}
+      <div className="relative aspect-[4/5] w-full">
+        <img 
+          src={spaceConcept.image} 
+          alt="Main Hero" 
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+        
+        {/* Floating Search/Question Bar */}
+        <div className="absolute top-4 left-4 right-4 z-10">
+          <div className="bg-white/90 backdrop-blur-md rounded-full shadow-lg p-3 flex items-center gap-3">
+             <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+             <span className="text-sm text-slate-600 font-medium">궁금한 내용을 물어보세요</span>
+          </div>
+        </div>
+      </div>
+
       {/* Main Content */}
       <div className="p-4 space-y-6">
-        {/* Hero / Promo */}
+        {/* AI Curator (Previously Hero) */}
         <Link href="/chat">
           <div className="block relative rounded-lg overflow-hidden bg-primary aspect-[2/1] shadow-lg group cursor-pointer transition-transform active:scale-[0.98]">
             {/* Deep Evening Gradient Background */}
