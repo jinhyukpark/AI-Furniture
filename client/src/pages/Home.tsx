@@ -42,7 +42,7 @@ export default function Home() {
       </header>
 
       {/* Main Content */}
-      <div className="p-4 space-y-8">
+      <div className="p-4 space-y-6">
         {/* Hero / Promo */}
         <Link href="/chat">
           <div className="block relative rounded-lg overflow-hidden bg-primary aspect-[2/1] shadow-lg group cursor-pointer transition-transform active:scale-[0.98]">
@@ -81,7 +81,7 @@ export default function Home() {
 
         {/* Featured Products */}
         <div>
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center justify-between mb-5 mt-2">
             <h2 className="text-lg font-semibold">오늘 이런 상품은 어떠세요?</h2>
             <button className="text-xs text-primary font-medium">전체보기</button>
           </div>

@@ -44,7 +44,7 @@ export function ProductCard({ product, onClick }: ProductCardProps) {
       </div>
       <div className="p-4">
         <div className="text-xs text-muted-foreground font-medium mb-1">{product.category}</div>
-        <h3 className="font-semibold text-foreground truncate">{product.name}</h3>
+        <h3 className="font-normal text-foreground truncate">{product.name}</h3>
         <div className="mt-2 font-bold text-lg">
           {product.price.toLocaleString()} <span className="text-xs font-normal text-muted-foreground">KRW</span>
         </div>
