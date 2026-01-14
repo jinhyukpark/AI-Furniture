@@ -44,12 +44,29 @@ export default function Home() {
       {/* Hero Image (Main Product Image) - Full Width */}
       <div className="relative aspect-[4/5] w-full">
         <img 
-          src={spaceConcept.image} 
+          src={products[0].image} 
           alt="Main Hero" 
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none" />
         
+        {/* Hotspots matching the user's reference */}
+        <div className="absolute top-[30%] left-[25%]">
+            <div className="w-8 h-8 rounded-full bg-white/30 backdrop-blur-md border border-white/50 flex items-center justify-center animate-pulse">
+                <div className="w-2 h-2 bg-white rounded-full"></div>
+            </div>
+        </div>
+        <div className="absolute top-[50%] left-[50%]">
+            <div className="w-10 h-10 rounded-full bg-white/30 backdrop-blur-md border border-white/50 flex items-center justify-center animate-pulse delay-75">
+                <div className="w-2.5 h-2.5 bg-white rounded-full"></div>
+            </div>
+        </div>
+        <div className="absolute bottom-[30%] right-[25%]">
+             <div className="w-8 h-8 rounded-full bg-white/30 backdrop-blur-md border border-white/50 flex items-center justify-center animate-pulse delay-150">
+                <div className="w-2 h-2 bg-white rounded-full"></div>
+            </div>
+        </div>
+
         {/* Floating Search/Question Bar */}
         <div className="absolute top-4 left-4 right-4 z-10">
           <div className="bg-white/90 backdrop-blur-md rounded-full shadow-lg p-3 flex items-center gap-3">
