@@ -111,25 +111,32 @@ export default function Home() {
         {/* AI Curator Promo Banner */}
         <button 
           onClick={() => window.location.href='/chat'}
-          className="w-full bg-[#E33B4E] rounded-xl mb-8 flex items-center justify-between px-5 py-4 shadow-sm hover:shadow-md transition-all group relative overflow-hidden h-24 text-white"
+          className="w-full bg-gradient-to-br from-[#E33B4E] to-[#FF6B6B] rounded-xl mb-8 flex items-center justify-between px-6 py-5 shadow-[0_8px_30px_rgb(227,59,78,0.15)] hover:shadow-[0_8px_30px_rgb(227,59,78,0.25)] transition-all duration-300 group relative overflow-hidden h-28 text-white border border-white/10"
         >
-          <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px)", backgroundSize: "16px 16px" }}></div>
-          <div className="relative z-10 text-left">
-             <div className="text-lg leading-tight mb-1 font-normal"><span className="font-bold">박진혁</span>님만을 위한 큐레이팅 상품</div>
-             <div className="text-xs font-medium opacity-90 flex items-center gap-1">
-               더 많은 혜택 받아가세요 <ChevronRight size={14} />
+          {/* Subtle noise texture overlay */}
+          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}></div>
+          
+          <div className="relative z-10 text-left flex flex-col justify-center h-full">
+             <div className="text-xl leading-snug mb-2 font-serif tracking-tight">
+               <span className="font-bold border-b border-white/30 pb-0.5">박진혁</span>님을 위한<br/>
+               프리미엄 큐레이션
+             </div>
+             <div className="text-[11px] font-medium opacity-80 flex items-center gap-1.5 bg-black/10 w-fit px-2 py-1 rounded-full backdrop-blur-sm">
+               지금 확인하고 혜택받기 <ChevronRight size={12} />
              </div>
           </div>
           
-          <div className="relative z-10 opacity-60">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className="drop-shadow-sm">
-              <path d="M12 4L13.5 10.5L20 12L13.5 13.5L12 20L10.5 13.5L4 12L10.5 10.5L12 4Z" />
-              <path d="M18 2L19 5L22 6L19 7L18 10L17 7L14 6L17 5L18 2Z" transform="scale(0.7) translate(8, 0)" />
-              <path d="M6 4L7 7L10 8L7 9L6 12L5 9L2 8L5 7L6 4Z" transform="scale(0.7) translate(-3, 3)" />
+          <div className="relative z-10 opacity-90 transform group-hover:scale-110 transition-transform duration-500">
+            <svg width="52" height="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="drop-shadow-lg">
+              <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="currentColor" />
+              <path d="M18 2L19 5L22 6L19 7L18 10L17 7L14 6L17 5L18 2Z" fill="currentColor" fillOpacity="0.7" transform="scale(0.7) translate(8, 0)" />
+              <path d="M6 4L7 7L10 8L7 9L6 12L5 9L2 8L5 7L6 4Z" fill="currentColor" fillOpacity="0.7" transform="scale(0.7) translate(-3, 3)" />
             </svg>
           </div>
           
-          <div className="absolute -right-4 -bottom-4 w-24 h-24 bg-white/10 rounded-full blur-2xl" />
+          {/* Decorative abstract shapes */}
+          <div className="absolute -right-8 -top-8 w-32 h-32 bg-white/10 rounded-full blur-3xl" />
+          <div className="absolute -left-8 -bottom-8 w-32 h-32 bg-rose-900/10 rounded-full blur-3xl" />
         </button>
 
         {/* Featured Products */}
