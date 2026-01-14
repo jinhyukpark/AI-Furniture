@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { MobileLayout } from "@/components/MobileLayout";
-import { Package, Search } from "lucide-react";
+import { Package, Search, ChevronDown, ListFilter } from "lucide-react";
 
 const CATEGORIES = ["전체", "침실", "거실", "키즈룸", "서재", "주방"];
 
@@ -32,8 +32,21 @@ export default function Market() {
           ))}
         </div>
 
+        {/* Filter & Sort Bar */}
+        <div className="flex items-center justify-between py-2 border-b border-slate-100">
+          <span className="text-sm text-muted-foreground">전체 8개 상품</span>
+          <div className="flex items-center gap-3">
+            <button className="flex items-center gap-1 text-sm font-medium text-slate-700">
+              인기순 <ChevronDown size={14} />
+            </button>
+            <button className="text-slate-700">
+              <ListFilter size={18} />
+            </button>
+          </div>
+        </div>
+
         <div className="grid grid-cols-2 gap-4">
-          {[1, 2, 3, 4, 5, 6].map((i) => (
+          {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
             <div key={i} className="aspect-square bg-slate-100 rounded-xl animate-pulse" />
           ))}
         </div>
