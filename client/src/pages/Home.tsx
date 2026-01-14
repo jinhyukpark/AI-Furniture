@@ -134,7 +134,7 @@ export default function Home() {
              <div>
                 <div className="flex items-center gap-1.5 mb-1">
                    <Sparkles size={14} className="text-primary" />
-                   <span className="text-xs font-bold text-primary uppercase tracking-wider">AI Budget Curator</span>
+                   <span className="text-xs font-bold text-primary uppercase tracking-wider">AI Curator</span>
                 </div>
                 <h3 className="font-serif text-xl text-slate-800">합리적인 <span className="italic">취향</span>의 발견</h3>
              </div>
