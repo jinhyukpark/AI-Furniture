@@ -2,7 +2,11 @@ import { useState } from "react";
 import { MobileLayout } from "@/components/MobileLayout";
 import { ProductCard } from "@/components/ProductCard";
 import { products } from "@/lib/data";
-import { Search, Bell, Moon, ArrowRight, Sparkles, X, MessageCircle, Send, ChevronLeft, ChevronRight, Gift } from "lucide-react";
+import { Search, Bell, Moon, ArrowRight, Sparkles, X, MessageCircle, Send, ChevronLeft, ChevronRight, Gift, Heart, User, Star } from "lucide-react";
+import bedroomImage from '@assets/stock_images/cozy_bedroom_with_be_4819121e.jpg';
+import livingImage from '@assets/stock_images/modern_living_room_w_32e2ad7a.jpg';
+import diningImage from '@assets/stock_images/white_dining_room_wi_e1e8f705.jpg';
+import shelfImage from '@assets/stock_images/modern_black_metal_d_a0872bda.jpg';
 import { Badge } from "@/components/ui/badge";
 import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
@@ -11,6 +15,37 @@ export default function Home() {
   const [activeHotspot, setActiveHotspot] = useState<number | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const heroImages = products.slice(0, 4).map(p => p.image);
+  
+  const iloomLifeItems = [
+    {
+      id: 1,
+      image: bedroomImage,
+      user: "민주님의 일룸생활",
+      desc: "나에게 침실은 언제부턴가 그 기능을 잃어가고 있었다. 아늑하고 간결한 침실을 원했지만 커다란 테이블...",
+      product: { name: "시그니처 미디엄...", price: "2,990,000원", img: products[0].image, likes: 9 }
+    },
+    {
+      id: 2,
+      image: livingImage,
+      user: "여진님의 일룸생활",
+      desc: "일룸 밴쿠버 소파를 사용한지 한달이 넘어간다. 소파 사이즈나 색감, 활용도에 대한 문의가 있어서...",
+      product: { name: "4인 아쿠아발수...", price: "1,990,000원", img: products[5].image, likes: 85 }
+    },
+    {
+      id: 3,
+      image: diningImage,
+      user: "서현님의 일룸생활",
+      desc: "일룸 업모션 테이블을 들이고 싶었고 들이게 된 가장 큰 이유는 바로 '높은 활용도' 때문이에요. 높이 조절...",
+      product: { name: "타원 테이블 160...", price: "1,390,000원", img: products[1].image, likes: 70 }
+    },
+    {
+      id: 4,
+      image: shelfImage,
+      user: "숙경님의 일룸생활",
+      desc: "설치 후 첫 느낌은 깔끔하고 심플한 디자인과 블랙컬러의 조화가 그려봤던 느낌보다 훨씬 인테리어와...",
+      product: { name: "2단 디스플레이...", price: "319,000원", img: products[4].image, likes: 24 }
+    }
+  ];
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % heroImages.length);
@@ -207,6 +242,58 @@ export default function Home() {
                  </p>
                </div>
             </div>
+          </div>
+        </div>
+        
+        {/* iloom Life Section */}
+        <div className="mt-12 mb-8">
+          <div className="flex items-center justify-between mb-6 px-2">
+            <div>
+              <div className="flex items-center gap-1.5 mb-1">
+                <User size={14} className="text-primary" />
+                <span className="text-xs font-bold text-primary uppercase tracking-wider">iloom Life</span>
+              </div>
+              <h3 className="font-serif text-xl text-slate-800">모두의 일룸생활</h3>
+            </div>
+            <button className="text-xs text-slate-400 font-medium">더보기</button>
+          </div>
+
+          <div className="flex overflow-x-auto pb-4 gap-4 px-2 -mx-4 scrollbar-hide snap-x pl-6">
+            {iloomLifeItems.map((item) => (
+              <div key={item.id} className="min-w-[280px] snap-center bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden group">
+                {/* Main Image */}
+                <div className="aspect-square relative overflow-hidden">
+                  <img src={item.image} alt={item.user} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm p-1.5 rounded-full">
+                     <div className="w-3 h-3 border border-slate-400 rounded-sm relative shadow-sm" style={{ boxShadow: "1px 1px 0px rgba(0,0,0,0.1)" }} />
+                  </div>
+                </div>
+                
+                <div className="p-4">
+                  {/* Rating & User */}
+                  <div className="flex items-center gap-0.5 mb-2">
+                    {[1,2,3,4,5].map(i => <Star key={i} size={12} className="text-[#E33B4E] fill-[#E33B4E]" />)}
+                  </div>
+                  <h4 className="font-bold text-sm mb-1">{item.user}</h4>
+                  <p className="text-xs text-slate-500 line-clamp-2 leading-relaxed mb-4 min-h-[2.5em]">
+                    {item.desc}
+                  </p>
+                  
+                  {/* Product Link */}
+                  <div className="flex items-center gap-3 pt-3 border-t border-slate-100">
+                    <img src={item.product.img} alt={item.product.name} className="w-10 h-10 rounded-md object-cover bg-slate-50" />
+                    <div className="flex-1 min-w-0">
+                      <div className="text-[10px] text-slate-500 mb-0.5 truncate">{item.product.name}</div>
+                      <div className="text-xs font-bold">{item.product.price}</div>
+                    </div>
+                    <div className="flex items-center gap-1 text-[10px] text-slate-400">
+                      <Heart size={10} /> {item.product.likes}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+            <div className="w-2 shrink-0" /> {/* Spacer */}
           </div>
         </div>
       </div>
