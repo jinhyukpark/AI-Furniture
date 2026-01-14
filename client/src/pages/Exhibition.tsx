@@ -6,15 +6,15 @@ import { spaceConcept } from "@/lib/data";
 export default function Exhibition() {
   return (
     <MobileLayout>
-      <div className="p-4 space-y-6">
-        <header className="flex items-center justify-between">
+      <div className="p-4 pb-24">
+        <header className="flex items-center justify-between mb-6">
           <h1 className="text-2xl font-bold">기획전</h1>
           <Search className="text-muted-foreground" />
         </header>
 
         {/* Featured Room */}
         <Link href="/room/1">
-          <div className="relative aspect-[4/3] bg-slate-100 rounded-2xl overflow-hidden shadow-lg cursor-pointer group">
+          <div className="relative aspect-[4/3] bg-slate-100 rounded-2xl overflow-hidden shadow-lg cursor-pointer group mb-12">
             <img 
               src={spaceConcept.image} 
               alt={spaceConcept.title} 
