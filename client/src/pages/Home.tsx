@@ -111,22 +111,16 @@ export default function Home() {
         {/* AI Curator Promo Banner */}
         <button 
           onClick={() => window.location.href='/chat'}
-          className="w-full bg-white border border-slate-200 rounded-xl mb-8 flex items-center justify-between group shadow-sm hover:shadow-md transition-all relative overflow-hidden h-24"
+          className="w-full bg-[#C8102E] rounded-xl mb-8 flex flex-col justify-center px-5 py-4 shadow-sm hover:shadow-md transition-all group relative overflow-hidden h-24 text-white"
         >
-          <div className="flex flex-col justify-center h-full px-5 relative z-10 w-3/5 text-left">
-             <div className="font-bold text-slate-900 text-lg leading-tight mb-1">박진혁님만을 위한 큐레이팅 상품</div>
-             <div className="text-xs font-medium text-rose-500">
-               더 많은 혜택 받아가세요
+          <div className="relative z-10 w-full text-left">
+             <div className="font-bold text-lg leading-tight mb-1">박진혁님만을 위한 큐레이팅 상품</div>
+             <div className="text-xs font-medium opacity-90 flex items-center gap-1">
+               더 많은 혜택 받아가세요 <ChevronRight size={14} />
              </div>
           </div>
           
-          <div className="absolute right-0 top-0 bottom-0 w-1/2 overflow-hidden">
-             <div className="grid grid-cols-2 gap-0 w-full h-full">
-                <img src={products[0].image} alt="" className="w-full h-full object-cover opacity-90" />
-                <img src={products[3].image} alt="" className="w-full h-full object-cover opacity-90" />
-             </div>
-             <div className="absolute inset-0 bg-gradient-to-r from-white via-white/60 to-transparent" />
-          </div>
+          <div className="absolute -right-4 -bottom-4 w-24 h-24 bg-white/10 rounded-full blur-2xl" />
         </button>
 
         {/* Featured Products */}
