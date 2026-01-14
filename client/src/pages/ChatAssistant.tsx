@@ -23,7 +23,8 @@ const suggestedQuestions = [
   "이 제품들로 방을 꾸미면 어떤 느낌일까요?",
   "총 견적이 얼마나 나올까요?",
   "이 가구들과 어울리는 벽지 색상은?",
-  "가구 배치는 어떻게 하면 좋을까요?"
+  "가구 배치는 어떻게 하면 좋을까요?",
+  "다른 컬러 옵션도 보여주세요"
 ];
 
 export default function ChatAssistant() {
@@ -268,14 +269,25 @@ export default function ChatAssistant() {
           <div ref={messagesEndRef} />
         </div>
 
-        {/* Suggested Questions (Horizontal Scroll) */}
-        <div className="px-4 pb-2">
-          <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-2">
-            {suggestedQuestions.map((q, idx) => (
+        {/* Suggested Questions (2 Rows: 3 top, 2 bottom) */}
+        <div className="px-4 pb-4 space-y-2">
+          <div className="flex gap-2 justify-center">
+            {suggestedQuestions.slice(0, 3).map((q, idx) => (
               <button
                 key={idx}
                 onClick={() => handleSend(q)}
-                className="shrink-0 bg-white border border-slate-200 rounded-full px-3 py-1.5 text-xs text-slate-600 hover:bg-slate-50 hover:border-primary/30 hover:text-primary transition-colors whitespace-nowrap shadow-sm"
+                className="bg-white/80 backdrop-blur-sm shadow-sm border border-slate-100 rounded-2xl px-3 py-2 text-[11px] font-medium text-slate-600 hover:bg-white hover:text-primary hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 truncate max-w-[32%]"
+              >
+                {q}
+              </button>
+            ))}
+          </div>
+          <div className="flex gap-2 justify-center">
+            {suggestedQuestions.slice(3, 5).map((q, idx) => (
+              <button
+                key={idx + 3}
+                onClick={() => handleSend(q)}
+                className="bg-white/80 backdrop-blur-sm shadow-sm border border-slate-100 rounded-2xl px-4 py-2 text-[11px] font-medium text-slate-600 hover:bg-white hover:text-primary hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
               >
                 {q}
               </button>
@@ -284,29 +296,29 @@ export default function ChatAssistant() {
         </div>
 
         {/* Input Area */}
-        <div className="p-3 bg-white border-t safe-area-pb">
+        <div className="p-4 bg-white/80 backdrop-blur-xl border-t border-slate-100 safe-area-pb">
           <form 
             onSubmit={(e) => { e.preventDefault(); handleSend(); }} 
-            className="flex gap-2 items-center"
+            className="flex gap-3 items-center"
           >
-            <Button variant="outline" size="icon" className="shrink-0 rounded-full h-10 w-10 border-slate-200">
-              <Plus size={20} className="text-slate-400" />
+            <Button variant="ghost" size="icon" className="shrink-0 h-10 w-10 text-slate-400 hover:bg-slate-50 hover:text-primary transition-colors">
+              <Plus size={22} />
             </Button>
-            <div className="flex-1 relative">
+            <div className="flex-1 relative group">
               <Input 
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="궁금한 점을 물어보세요..." 
-                className="w-full rounded-full bg-slate-100 border-transparent focus:bg-white focus:border-primary/20 pr-10 transition-all h-10"
+                className="w-full rounded-2xl bg-slate-50 border-slate-100 focus:bg-white focus:border-primary/30 focus:ring-4 focus:ring-primary/5 pr-10 transition-all h-11 text-sm shadow-inner group-hover:bg-white"
               />
             </div>
             <Button 
               type="submit" 
               size="icon" 
-              className={`rounded-full shrink-0 h-10 w-10 transition-all ${input.trim() ? "bg-primary hover:bg-primary/90" : "bg-slate-200 hover:bg-slate-300"}`}
+              className={`rounded-2xl shrink-0 h-11 w-11 shadow-lg shadow-primary/20 transition-all duration-300 ${input.trim() ? "bg-primary hover:bg-primary/90 translate-y-0" : "bg-slate-200 hover:bg-slate-300 translate-y-0"}`}
               disabled={!input.trim()}
             >
-              <Send size={18} className="text-white" />
+              <Send size={18} className="text-white ml-0.5" />
             </Button>
           </form>
         </div>
