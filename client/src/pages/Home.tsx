@@ -111,13 +111,21 @@ export default function Home() {
         {/* AI Curator Promo Banner */}
         <button 
           onClick={() => window.location.href='/chat'}
-          className="w-full bg-[#C8102E] rounded-xl mb-8 flex flex-col justify-center px-5 py-4 shadow-sm hover:shadow-md transition-all group relative overflow-hidden h-24 text-white"
+          className="w-full bg-[#C8102E] rounded-xl mb-8 flex items-center justify-between px-5 py-4 shadow-sm hover:shadow-md transition-all group relative overflow-hidden h-24 text-white"
         >
-          <div className="relative z-10 w-full text-left">
+          <div className="relative z-10 text-left">
              <div className="font-bold text-lg leading-tight mb-1">박진혁님만을 위한 큐레이팅 상품</div>
              <div className="text-xs font-medium opacity-90 flex items-center gap-1">
                더 많은 혜택 받아가세요 <ChevronRight size={14} />
              </div>
+          </div>
+          
+          <div className="relative z-10 opacity-40">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className="drop-shadow-sm">
+              <path d="M12 4L13.5 10.5L20 12L13.5 13.5L12 20L10.5 13.5L4 12L10.5 10.5L12 4Z" />
+              <path d="M18 2L19 5L22 6L19 7L18 10L17 7L14 6L17 5L18 2Z" transform="scale(0.7) translate(8, 0)" />
+              <path d="M6 4L7 7L10 8L7 9L6 12L5 9L2 8L5 7L6 4Z" transform="scale(0.7) translate(-3, 3)" />
+            </svg>
           </div>
           
           <div className="absolute -right-4 -bottom-4 w-24 h-24 bg-white/10 rounded-full blur-2xl" />
