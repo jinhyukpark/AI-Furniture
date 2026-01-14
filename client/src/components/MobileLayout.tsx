@@ -19,7 +19,7 @@ export function MobileLayout({ children }: { children: React.ReactNode }) {
         <div className="relative bg-white border-t pb-safe pointer-events-auto h-[70px] flex items-end justify-around pb-2 px-2">
           
           <Link href="/">
-            <a className={cn("flex flex-col items-center gap-1 w-14 py-2 justify-end transition-colors", 
+            <a className={cn("flex flex-col items-center gap-1 w-14 py-2 justify-end transition-colors z-10", 
               location === "/" ? "text-primary" : "text-slate-400 hover:text-slate-600")}>
               <Home size={22} strokeWidth={location === "/" ? 2.5 : 2} />
               <span className="text-[10px] font-medium mt-0.5">홈</span>
@@ -27,23 +27,26 @@ export function MobileLayout({ children }: { children: React.ReactNode }) {
           </Link>
 
           <Link href="/market">
-            <a className={cn("flex flex-col items-center gap-1 w-14 py-2 justify-end transition-colors", 
+            <a className={cn("flex flex-col items-center gap-1 w-14 py-2 justify-end transition-colors z-10", 
               location === "/market" ? "text-primary" : "text-slate-400 hover:text-slate-600")}>
               <Store size={22} strokeWidth={location === "/market" ? 2.5 : 2} />
               <span className="text-[10px] font-medium mt-0.5">마켓</span>
             </a>
           </Link>
 
-          {/* 3D AI Button - Floats above */}
+          {/* 3D AI Button - Floats above with gap */}
           <Link href="/chat">
-            <a className="relative -top-5 flex flex-col items-center group">
+            <a className="relative -top-3 flex flex-col items-center group z-20">
+              {/* White background curve/cutout effect behind the button */}
+              <div className="absolute -bottom-6 w-20 h-10 bg-white rounded-[50%] -z-10 shadow-[0_-8px_10px_-5px_rgba(0,0,0,0.05)]"></div>
+              
               <div className={cn(
-                "w-14 h-14 rounded-full bg-gradient-to-br from-primary to-rose-600 flex items-center justify-center text-white shadow-lg shadow-primary/40 transition-transform duration-300 group-active:scale-95 border-4 border-white",
-                location === "/chat" ? "ring-2 ring-primary/20 scale-110" : ""
+                "w-14 h-14 rounded-full bg-gradient-to-br from-primary to-rose-600 flex items-center justify-center text-white shadow-xl shadow-primary/30 transition-transform duration-300 group-active:scale-95 border-[3px] border-white",
+                location === "/chat" ? "ring-2 ring-primary/20 scale-105" : ""
               )}>
                 <Sparkles size={24} strokeWidth={2.5} className="animate-pulse" />
               </div>
-              <span className={cn("text-[10px] font-bold mt-1 transition-colors", 
+              <span className={cn("text-[10px] font-bold mt-2 transition-colors", 
                  location === "/chat" ? "text-primary" : "text-slate-500")}>
                 AI
               </span>
@@ -51,7 +54,7 @@ export function MobileLayout({ children }: { children: React.ReactNode }) {
           </Link>
 
           <Link href="/exhibition">
-            <a className={cn("flex flex-col items-center gap-1 w-14 py-2 justify-end transition-colors", 
+            <a className={cn("flex flex-col items-center gap-1 w-14 py-2 justify-end transition-colors z-10", 
               location === "/exhibition" ? "text-primary" : "text-slate-400 hover:text-slate-600")}>
               <Gift size={22} strokeWidth={location === "/exhibition" ? 2.5 : 2} />
               <span className="text-[10px] font-medium mt-0.5">기획전</span>
@@ -59,7 +62,7 @@ export function MobileLayout({ children }: { children: React.ReactNode }) {
           </Link>
 
           <Link href="/profile">
-            <a className={cn("flex flex-col items-center gap-1 w-14 py-2 justify-end transition-colors", 
+            <a className={cn("flex flex-col items-center gap-1 w-14 py-2 justify-end transition-colors z-10", 
               location === "/profile" ? "text-primary" : "text-slate-400 hover:text-slate-600")}>
               <User size={22} strokeWidth={location === "/profile" ? 2.5 : 2} />
               <span className="text-[10px] font-medium mt-0.5">마이</span>
