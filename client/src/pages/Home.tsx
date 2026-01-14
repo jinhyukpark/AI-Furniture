@@ -111,7 +111,7 @@ export default function Home() {
         {/* AI Curator Promo Banner */}
         <button 
           onClick={() => window.location.href='/chat'}
-          className="w-full bg-gradient-to-r from-primary/5 via-white to-primary/5 border border-primary/20 rounded-2xl p-4 mb-8 flex items-center justify-between group shadow-sm hover:shadow-md transition-all relative overflow-hidden"
+          className="w-full bg-gradient-to-r from-primary/5 via-white to-primary/5 border border-primary/20 rounded-lg p-4 mb-8 flex items-center justify-between group shadow-sm hover:shadow-md transition-all relative overflow-hidden"
         >
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
           <div className="flex items-center gap-3 relative z-10">
@@ -119,11 +119,11 @@ export default function Home() {
                 <Sparkles size={20} className="fill-current drop-shadow-sm" />
              </div>
              <div className="text-left">
-                <div className="text-[10px] font-bold text-rose-500 mb-0.5 flex items-center gap-1">
+                <div className="text-xs font-bold text-rose-500 mb-0.5 flex items-center gap-1">
                   <span className="inline-block w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse shadow-[0_0_8px_rgba(244,63,94,0.6)]" />
-                  지금 놓치면 절대안되는 !
+                  지금 놓치면 후회하는
                 </div>
-                <div className="font-bold text-slate-800 text-sm">박진혁님이 좋아할만한 큐레이팅 상품들을 소개합니다.</div>
+                <div className="font-bold text-slate-800 text-sm">AI 가 추천하는 큐레이팅 상품을 소개합니다.</div>
              </div>
           </div>
           <div className="w-8 h-8 rounded-full bg-white shadow-sm border border-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all relative z-10">
