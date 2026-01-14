@@ -297,7 +297,7 @@ export default function Home() {
             <div>
               <div className="flex items-center gap-1.5 mb-1">
                 <User size={14} className="text-primary" />
-                <span className="text-xs font-bold text-primary uppercase tracking-wider">iloom Life</span>
+                <span className="text-xs font-bold text-primary tracking-wider">일룸 라이프</span>
               </div>
               <h3 className="font-serif text-xl text-slate-800">모두의 일룸생활</h3>
             </div>
