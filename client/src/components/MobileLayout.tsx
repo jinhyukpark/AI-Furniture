@@ -36,7 +36,7 @@ export function MobileLayout({ children }: { children: React.ReactNode }) {
 
           {/* 3D AI Button - Floats above */}
           <Link href="/chat">
-            <a className="relative -top-5 flex flex-col items-center group">
+            <a className="relative -top-2 z-50 flex flex-col items-center group">
               <div className={cn(
                 "w-14 h-14 rounded-full bg-gradient-to-br from-primary to-rose-600 flex items-center justify-center text-white shadow-lg shadow-primary/40 transition-transform duration-300 group-active:scale-95 border-4 border-white",
                 location === "/chat" ? "ring-2 ring-primary/20 scale-110" : ""
