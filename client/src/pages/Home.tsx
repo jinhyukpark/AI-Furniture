@@ -74,7 +74,32 @@ export default function Home() {
         
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
         
-        <div className="absolute bottom-10 right-6 z-10 pointer-events-none text-right">
+        {/* Carousel Controls Overlay */}
+        <div className="absolute bottom-3 left-0 right-0 z-20 flex items-center justify-between px-4">
+          <div className="flex gap-1.5 items-center">
+            {heroImages.map((_, idx) => (
+              <button 
+                key={idx}
+                onClick={() => setCurrentSlide(idx)}
+                className={`transition-all duration-300 rounded-full shadow-sm ${
+                  currentSlide === idx 
+                    ? "w-6 h-1 bg-white" 
+                    : "w-1 h-1 bg-white/50 hover:bg-white/80"
+                }`}
+              />
+            ))}
+          </div>
+          <div className="flex gap-2">
+            <button onClick={prevSlide} className="w-8 h-8 rounded-full bg-black/20 backdrop-blur-sm text-white flex items-center justify-center hover:bg-black/40 transition-colors border border-white/10">
+              <ChevronLeft size={16} />
+            </button>
+            <button onClick={nextSlide} className="w-8 h-8 rounded-full bg-black/20 backdrop-blur-sm text-white flex items-center justify-center hover:bg-black/40 transition-colors border border-white/10">
+              <ChevronRight size={16} />
+            </button>
+          </div>
+        </div>
+
+        <div className="absolute bottom-14 right-6 z-10 pointer-events-none text-right">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -87,29 +112,6 @@ export default function Home() {
             </h2>
           </motion.div>
         </div>
-      </div>
-      
-      {/* Carousel Controls */}
-      <div className="bg-white border-b py-3 flex items-center justify-center gap-6">
-        <button onClick={prevSlide} className="text-slate-400 hover:text-slate-800 transition-colors p-1">
-          <ChevronLeft size={20} />
-        </button>
-        <div className="flex gap-2">
-          {heroImages.map((_, idx) => (
-            <button 
-              key={idx}
-              onClick={() => setCurrentSlide(idx)}
-              className={`transition-all duration-300 rounded-full ${
-                currentSlide === idx 
-                  ? "w-6 h-1.5 bg-primary" 
-                  : "w-1.5 h-1.5 bg-slate-300 hover:bg-slate-400"
-              }`}
-            />
-          ))}
-        </div>
-        <button onClick={nextSlide} className="text-slate-400 hover:text-slate-800 transition-colors p-1">
-          <ChevronRight size={20} />
-        </button>
       </div>
 
       {/* Main Content */}
