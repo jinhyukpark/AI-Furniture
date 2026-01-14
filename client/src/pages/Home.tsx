@@ -82,7 +82,7 @@ export default function Home() {
         {/* Featured Products */}
         <div>
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-bold">회원님을 위한 추천</h2>
+            <h2 className="text-lg font-bold">오늘 이런 상품은 어떠세요?</h2>
             <button className="text-xs text-primary font-medium">전체보기</button>
           </div>
           

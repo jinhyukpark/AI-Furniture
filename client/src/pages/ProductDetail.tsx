@@ -111,7 +111,7 @@ export default function ProductDetail() {
               onClick={handlePick}
               className={`w-10 h-10 rounded-full bg-white/80 backdrop-blur-md shadow-sm flex items-center justify-center transition-colors ${isPicked ? "text-primary bg-primary/10" : "text-foreground hover:bg-white"}`}
             >
-              <Bookmark size={20} className={isPicked ? "text-primary fill-current" : ""} />
+              <Wand2 size={20} className={isPicked ? "text-primary fill-current" : ""} />
             </button>
             <button className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-md shadow-sm flex items-center justify-center text-foreground hover:bg-white transition-colors">
               <Share2 size={20} />
@@ -369,7 +369,7 @@ export default function ProductDetail() {
             className={`w-14 h-14 rounded-xl shrink-0 transition-colors ${isPicked ? "border-primary text-primary bg-primary/5" : "border-slate-200"}`}
             onClick={handlePick}
           >
-            <Bookmark size={24} className={isPicked ? "fill-current" : ""} />
+            <Wand2 size={24} className={isPicked ? "fill-current" : ""} />
           </Button>
           <Button 
             className="flex-1 h-14 rounded-xl text-lg font-bold shadow-lg shadow-primary/20"
