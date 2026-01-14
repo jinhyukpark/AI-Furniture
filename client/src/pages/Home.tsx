@@ -2,7 +2,7 @@ import { useState } from "react";
 import { MobileLayout } from "@/components/MobileLayout";
 import { ProductCard } from "@/components/ProductCard";
 import { products } from "@/lib/data";
-import { Search, Bell, Moon, ArrowRight, Sparkles, X, MessageCircle } from "lucide-react";
+import { Search, Bell, Moon, ArrowRight, Sparkles, X, MessageCircle, Send } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
@@ -16,7 +16,7 @@ export default function Home() {
       top: "30%",
       left: "35%",
       label: "모니터 조명",
-      questions: ["이 조명 제품 정보 알려줘", "눈 피로도에 좋은가요?", "가격이 궁금해요"]
+      questions: ["장시간 앉아도 편한가요?", "헤드레스트 조절 되나요?", "바퀴 소음은 없나요?"]
     },
     {
       id: 2,
@@ -109,21 +109,40 @@ export default function Home() {
                   initial={{ opacity: 0, y: 10, scale: 0.95 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                  className="absolute left-1/2 -translate-x-1/2 mt-3 w-64 bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl border border-white/20 p-4 z-20 origin-top"
+                  className="absolute left-1/2 -translate-x-1/2 mt-3 w-[280px] bg-white rounded-[20px] shadow-2xl p-5 z-50 origin-top text-left"
                 >
-                  <div className="text-xs font-bold text-muted-foreground mb-3 flex items-center gap-1">
-                    <MessageCircle size={12} className="text-primary" />
-                    추천 질문
+                  <div className="flex justify-between items-center mb-4">
+                    <div className="flex items-center gap-1.5 text-primary font-bold">
+                       <Sparkles size={16} className="fill-current" /> AI 큐레이터
+                    </div>
+                    <button onClick={(e) => { e.stopPropagation(); setActiveHotspot(null); }}>
+                        <X size={18} className="text-slate-400" />
+                    </button>
                   </div>
-                  <div className="space-y-2">
+
+                  <h3 className="text-lg font-bold text-slate-900 mb-1">{hotspot.label}</h3>
+                  <p className="text-xs text-slate-500 mb-4">이 제품에 대해 궁금한 점을 알려주세요.</p>
+
+                  <div className="space-y-2 mb-4">
                     {hotspot.questions.map((q, idx) => (
                       <Link key={idx} href={`/chat?q=${encodeURIComponent(q)}`}>
-                        <button className="w-full text-left text-sm p-2.5 rounded-xl bg-slate-50 hover:bg-primary/5 hover:text-primary transition-colors flex items-center justify-between group">
-                          <span>{q}</span>
-                          <ArrowRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0" />
+                        <button className="w-full text-left bg-slate-50 hover:bg-slate-100 p-3 rounded-xl text-sm text-slate-700 flex justify-between items-center transition-colors group">
+                          {q}
+                          <MessageCircle size={14} className="text-slate-300 group-hover:text-primary transition-colors" />
                         </button>
                       </Link>
                     ))}
+                  </div>
+
+                  <div className="relative">
+                     <input 
+                        className="w-full bg-slate-50 rounded-full py-2.5 pl-4 pr-10 text-sm border-none focus:ring-1 focus:ring-primary placeholder:text-slate-400" 
+                        placeholder="직접 질문 입력하기..." 
+                        onClick={(e) => e.stopPropagation()}
+                     />
+                     <button className="absolute right-1 top-1 w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white">
+                        <Send size={14} />
+                     </button>
                   </div>
                 </motion.div>
               )}
