@@ -1,7 +1,7 @@
 import deskImage from '@assets/generated_images/modern_minimalist_white_desk_for_home_office.png';
 import bookshelfImage from '@assets/generated_images/wide_modern_white_bookshelf_filling_the_frame.png';
 import kidsBedImage from '@assets/generated_images/modern_kids_single_bed_white_wood.png';
-import spaceRoomImage from '@assets/generated_images/space_themed_kids_bedroom_with_modern_furniture.png';
+import roomSceneImage from '@assets/room_scene_interactive.png';
 
 export const products = [
   {
@@ -30,13 +30,31 @@ export const products = [
     image: kidsBedImage,
     description: "우리아이 첫 침대로 안전하고 아늑합니다. 둥근 모서리로 안전을 더했습니다.",
     features: ["E0 등급 목재", "안전 가드", "저상형 디자인"]
+  },
+  {
+    id: 4,
+    name: "올리버 메쉬 의자",
+    price: 159000,
+    category: "서재",
+    image: roomSceneImage, // Using room scene as placeholder crop would be better but this works for mockup
+    description: "오래 앉아있어도 편안한 메쉬 소재의 인체공학 의자입니다.",
+    features: ["메쉬 등판", "요추 지지대", "틸팅 기능"]
+  },
+  {
+    id: 5,
+    name: "루미 스마트 램프",
+    price: 79000,
+    category: "조명",
+    image: roomSceneImage,
+    description: "앱으로 제어하는 스마트 조명. 학습 모드와 휴식 모드를 지원합니다.",
+    features: ["앱 제어", "밝기 조절", "색온도 조절"]
   }
 ];
 
 export const spaceConcept = {
-  title: "우주 탐험가 룸",
-  image: spaceRoomImage,
-  description: "미래의 우주비행사를 꿈꾸는 아이를 위한 방입니다. 팅클 침대와 로이 데스크를 딥 스페이스 네이비 테마로 구성했습니다.",
-  products: [1, 3], // Desk and Kids Bed
-  totalPrice: 459000 + 320000 + 150000 // Added decoration cost
+  title: "모던 홈 오피스",
+  image: roomSceneImage,
+  description: "집중력이 높아지는 화이트 톤의 홈 오피스. 로이 모션 데스크와 올리버 의자로 완벽한 업무 환경을 만들어보세요.",
+  products: [1, 4, 5], // Desk, Chair, Lamp
+  totalPrice: 459000 + 159000 + 79000
 };
