@@ -111,7 +111,7 @@ export default function Home() {
         {/* AI Curator Promo Banner */}
         <button 
           onClick={() => window.location.href='/chat'}
-          className="w-full bg-[#E33B4E] rounded-xl mb-8 flex items-center justify-between px-5 py-4 shadow-sm hover:shadow-md transition-all group relative overflow-hidden h-24 text-white"
+          className="w-full bg-gradient-to-r from-[#FF6B6B] to-[#FF8E8E] rounded-lg mb-8 flex items-center justify-between px-5 py-4 shadow-sm hover:shadow-md transition-all group relative overflow-hidden h-24 text-white"
         >
           <div className="relative z-10 text-left">
              <div className="text-lg leading-tight mb-1 font-normal"><span className="font-bold">박진혁</span>님만을 위한 큐레이팅 상품</div>
