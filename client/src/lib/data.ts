@@ -3,6 +3,7 @@ import bookshelfImage from '@assets/generated_images/wide_modern_white_bookshelf
 import kidsBedImage from '@assets/generated_images/kids_bed_filling_the_frame.png';
 import roomSceneImage from '@assets/room_scene_interactive.png';
 import lampImage from '@assets/generated_images/modern_smart_desk_lamp.png';
+import sofaImage from '@assets/stock_images/modern_fabric_sofa_g_467ab477.jpg';
 
 export const products = [
   {
@@ -49,6 +50,15 @@ export const products = [
     image: lampImage,
     description: "앱으로 제어하는 스마트 조명. 학습 모드와 휴식 모드를 지원합니다.",
     features: ["앱 제어", "밝기 조절", "색온도 조절"]
+  },
+  {
+    id: 6,
+    name: "코펜하겐 1인 소파",
+    price: 249000,
+    category: "거실",
+    image: sofaImage,
+    description: "북유럽 감성의 1인용 패브릭 소파. 편안한 휴식을 위한 완벽한 선택.",
+    features: ["발수 코팅 패브릭", "원목 다리", "고밀도 폼"]
   }
 ];
 
