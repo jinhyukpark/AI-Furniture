@@ -121,8 +121,8 @@ export default function Home() {
                <span className="font-bold border-b border-white/30 pb-0.5">박진혁</span>님을 위한<br/>
                프리미엄 큐레이션
              </div>
-             <div className="text-[11px] font-medium opacity-80 flex items-center gap-1.5 bg-black/10 w-fit px-2 py-1 rounded-full backdrop-blur-sm">
-               지금 확인하고 혜택받기 <ChevronRight size={12} />
+             <div className="text-xs font-light opacity-90 flex items-center gap-1 mt-1 tracking-wide">
+               취향이 깃든 공간을 발견해보세요 <ChevronRight size={12} />
              </div>
           </div>
           
