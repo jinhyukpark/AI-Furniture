@@ -38,9 +38,6 @@ export function ProductCard({ product, onClick }: ProductCardProps) {
           alt={product.name}
           className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
-        <button className="absolute bottom-3 right-3 h-8 w-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-sm text-primary hover:bg-primary hover:text-white transition-colors z-10">
-          <Plus size={18} />
-        </button>
       </div>
       <div className="p-4">
         <div className="text-xs text-muted-foreground font-medium mb-1">{product.category}</div>
