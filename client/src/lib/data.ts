@@ -1,6 +1,6 @@
 import deskImage from '@assets/generated_images/modern_minimalist_white_desk_for_home_office.png';
 import bookshelfImage from '@assets/generated_images/wide_modern_white_bookshelf_filling_the_frame.png';
-import kidsBedImage from '@assets/generated_images/modern_kids_single_bed_white_wood.png';
+import kidsBedImage from '@assets/generated_images/kids_bed_filling_the_frame.png';
 import roomSceneImage from '@assets/room_scene_interactive.png';
 import lampImage from '@assets/generated_images/modern_smart_desk_lamp.png';
 
