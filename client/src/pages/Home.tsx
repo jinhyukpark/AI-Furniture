@@ -50,10 +50,15 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-br from-[#1e1b4b] via-[#4c0519] to-primary z-0"></div>
             
             {/* Stars */}
-            <div className="absolute top-4 right-10 w-1 h-1 bg-white/60 rounded-full animate-pulse duration-1000"></div>
-            <div className="absolute top-10 right-20 w-0.5 h-0.5 bg-white/40 rounded-full animate-pulse delay-300"></div>
-            <div className="absolute bottom-10 left-1/2 w-0.5 h-0.5 bg-white/30 rounded-full animate-pulse delay-700"></div>
+            <div className="absolute top-4 right-10 w-1 h-1 bg-white rounded-full animate-twinkle" style={{ animationDelay: "0s" }}></div>
+            <div className="absolute top-10 right-20 w-0.5 h-0.5 bg-white/80 rounded-full animate-twinkle" style={{ animationDelay: "1s" }}></div>
+            <div className="absolute bottom-10 left-1/2 w-0.5 h-0.5 bg-white/60 rounded-full animate-twinkle" style={{ animationDelay: "2s" }}></div>
+            <div className="absolute top-8 right-1/3 w-0.5 h-0.5 bg-white/70 rounded-full animate-twinkle" style={{ animationDelay: "1.5s" }}></div>
+            <div className="absolute top-1/2 right-4 w-1 h-1 bg-white/90 rounded-full animate-twinkle" style={{ animationDelay: "0.5s" }}></div>
 
+            {/* Shooting Star */}
+            <div className="absolute top-[-10px] right-[20px] w-20 h-[1px] bg-gradient-to-l from-transparent via-white to-transparent animate-shooting-star opacity-0 rotate-[-45deg]"></div>
+            
             {/* Content */}
             <div className="relative z-10 p-6 flex flex-col justify-center text-white h-full">
               <Badge className="w-fit mb-2 bg-white/20 hover:bg-white/30 text-white border-none backdrop-blur-sm flex items-center gap-1">
