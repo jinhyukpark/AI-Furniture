@@ -13,19 +13,27 @@ export default function ProductDetail() {
   const [, setLocation] = useLocation();
   const { toast } = useToast();
   const [isPicked, setIsPicked] = useState(false);
+  const [showNotification, setShowNotification] = useState(false);
   
   const product = products.find(p => p.id === Number(params?.id));
+
+  useEffect(() => {
+    if (showNotification) {
+      const timer = setTimeout(() => {
+        setShowNotification(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [showNotification]);
 
   if (!product) return <div>Product not found</div>;
 
   const handlePick = () => {
     setIsPicked(!isPicked);
     if (!isPicked) {
-      toast({
-        title: "상품을 Pick 했습니다!",
-        description: "이제 AI에게 이 상품에 대해 자세히 물어보거나 비교를 요청할 수 있어요.",
-        duration: 3000,
-      });
+      setShowNotification(true);
+    } else {
+      setShowNotification(false);
     }
   };
 
@@ -44,6 +52,31 @@ export default function ProductDetail() {
   return (
     <MobileLayout>
       <div className="relative min-h-screen bg-white pb-24">
+        {/* Custom Notification Overlay */}
+        <AnimatePresence>
+          {showNotification && (
+            <motion.div
+              initial={{ opacity: 0, y: -20, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -20, scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              className="fixed top-20 left-4 right-4 z-[60] mx-auto max-w-sm"
+            >
+              <div className="bg-white/90 backdrop-blur-md border border-primary/20 shadow-xl rounded-2xl p-4 flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-rose-400 flex items-center justify-center shrink-0 shadow-lg shadow-primary/30">
+                  <Sparkles className="text-white w-5 h-5 animate-pulse" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h4 className="font-bold text-sm text-foreground mb-1">상품을 Pick 했습니다!</h4>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    이제 AI에게 이 상품에 대해 자세히 물어보거나 비교를 요청할 수 있어요.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         {/* Header (Floating) */}
         <div className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center p-4 max-w-md mx-auto">
           <button 
