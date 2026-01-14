@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { MobileLayout } from "@/components/MobileLayout";
 import { ProductCard } from "@/components/ProductCard";
 import { products } from "@/lib/data";
@@ -10,11 +10,31 @@ import shelfImage from '@assets/stock_images/modern_black_metal_d_a0872bda.jpg';
 import { Badge } from "@/components/ui/badge";
 import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
+import useEmblaCarousel from 'embla-carousel-react';
 
 export default function Home() {
   const [activeHotspot, setActiveHotspot] = useState<number | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [showPromoBanner, setShowPromoBanner] = useState(true);
+  
+  // Embla Carousel for iloom Life
+  const [emblaRef, emblaApi] = useEmblaCarousel({ align: "start", loop: false });
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    setScrollSnaps(emblaApi.scrollSnapList());
+    emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
+    onSelect(); // Set initial state
+  }, [emblaApi, onSelect]);
+
   const heroImages = products.slice(0, 4).map(p => p.image);
   
   const iloomLifeItems = [
@@ -284,42 +304,57 @@ export default function Home() {
             <button className="text-xs text-slate-400 font-medium">더보기</button>
           </div>
 
-          <div className="flex overflow-x-auto pb-4 gap-4 px-2 -mx-4 scrollbar-hide snap-x pl-6">
-            {iloomLifeItems.map((item) => (
-              <div key={item.id} className="min-w-[280px] snap-center bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden group">
-                {/* Main Image */}
-                <div className="aspect-square relative overflow-hidden">
-                  <img src={item.image} alt={item.user} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                  <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm p-1.5 rounded-full">
-                     <div className="w-3 h-3 border border-slate-400 rounded-sm relative shadow-sm" style={{ boxShadow: "1px 1px 0px rgba(0,0,0,0.1)" }} />
+          <div className="overflow-hidden" ref={emblaRef}>
+            <div className="flex gap-4 px-4 mb-4">
+              {iloomLifeItems.map((item) => (
+                <div key={item.id} className="min-w-[280px] flex-[0_0_85%] bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden group">
+                  {/* Main Image */}
+                  <div className="aspect-square relative overflow-hidden">
+                    <img src={item.image} alt={item.user} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm p-1.5 rounded-full">
+                       <div className="w-3 h-3 border border-slate-400 rounded-sm relative shadow-sm" style={{ boxShadow: "1px 1px 0px rgba(0,0,0,0.1)" }} />
+                    </div>
                   </div>
-                </div>
-                
-                <div className="p-4">
-                  {/* Rating & User */}
-                  <div className="flex items-center gap-0.5 mb-2">
-                    {[1,2,3,4,5].map(i => <Star key={i} size={12} className="text-[#E33B4E] fill-[#E33B4E]" />)}
-                  </div>
-                  <h4 className="font-bold text-sm mb-1">{item.user}</h4>
-                  <p className="text-xs text-slate-500 line-clamp-2 leading-relaxed mb-4 min-h-[2.5em]">
-                    {item.desc}
-                  </p>
                   
-                  {/* Product Link */}
-                  <div className="flex items-center gap-3 pt-3 border-t border-slate-100">
-                    <img src={item.product.img} alt={item.product.name} className="w-10 h-10 rounded-md object-cover bg-slate-50" />
-                    <div className="flex-1 min-w-0">
-                      <div className="text-[10px] text-slate-500 mb-0.5 truncate">{item.product.name}</div>
-                      <div className="text-xs font-bold">{item.product.price}</div>
+                  <div className="p-4">
+                    {/* Rating & User */}
+                    <div className="flex items-center gap-0.5 mb-2">
+                      {[1,2,3,4,5].map(i => <Star key={i} size={12} className="text-[#E33B4E] fill-[#E33B4E]" />)}
                     </div>
-                    <div className="flex items-center gap-1 text-[10px] text-slate-400">
-                      <Heart size={10} /> {item.product.likes}
+                    <h4 className="font-bold text-sm mb-1">{item.user}</h4>
+                    <p className="text-xs text-slate-500 line-clamp-2 leading-relaxed mb-4 min-h-[2.5em]">
+                      {item.desc}
+                    </p>
+                    
+                    {/* Product Link */}
+                    <div className="flex items-center gap-3 pt-3 border-t border-slate-100">
+                      <img src={item.product.img} alt={item.product.name} className="w-10 h-10 rounded-md object-cover bg-slate-50" />
+                      <div className="flex-1 min-w-0">
+                        <div className="text-[10px] text-slate-500 mb-0.5 truncate">{item.product.name}</div>
+                        <div className="text-xs font-bold">{item.product.price}</div>
+                      </div>
+                      <div className="flex items-center gap-1 text-[10px] text-slate-400">
+                        <Heart size={10} /> {item.product.likes}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              ))}
+            </div>
+          </div>
+          
+          {/* Carousel Dots */}
+          <div className="flex justify-center gap-1.5 pb-2">
+            {scrollSnaps.map((_, index) => (
+              <button
+                key={index}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  index === selectedIndex ? "bg-[#E33B4E] w-4" : "bg-slate-200 w-1.5"
+                }`}
+                onClick={() => emblaApi?.scrollTo(index)}
+                aria-label={`Go to slide ${index + 1}`}
+              />
             ))}
-            <div className="w-2 shrink-0" /> {/* Spacer */}
           </div>
         </div>
       </div>
