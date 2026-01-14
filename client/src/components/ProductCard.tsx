@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Plus } from "lucide-react";
+import { useLocation } from "wouter";
 
 interface ProductCardProps {
   product: {
@@ -13,13 +14,23 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, onClick }: ProductCardProps) {
+  const [, setLocation] = useLocation();
+
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    } else {
+      setLocation(`/product/${product.id}`);
+    }
+  };
+
   return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       whileTap={{ scale: 0.98 }}
-      className="group relative bg-card rounded-lg overflow-hidden shadow-sm border border-border/50"
-      onClick={onClick}
+      className="group relative bg-card rounded-lg overflow-hidden shadow-sm border border-border/50 cursor-pointer"
+      onClick={handleClick}
     >
       <div className="aspect-square relative overflow-hidden bg-muted">
         <img 
