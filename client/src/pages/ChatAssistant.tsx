@@ -269,21 +269,19 @@ export default function ChatAssistant() {
         </div>
 
         {/* Suggested Questions (Horizontal Scroll) */}
-        {messages.length < 3 && (
-          <div className="px-4 pb-2">
-            <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-2">
-              {suggestedQuestions.map((q, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => handleSend(q)}
-                  className="shrink-0 bg-white border border-slate-200 rounded-full px-3 py-1.5 text-xs text-slate-600 hover:bg-slate-50 hover:border-primary/30 hover:text-primary transition-colors whitespace-nowrap shadow-sm"
-                >
-                  {q}
-                </button>
-              ))}
-            </div>
+        <div className="px-4 pb-2">
+          <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-2">
+            {suggestedQuestions.map((q, idx) => (
+              <button
+                key={idx}
+                onClick={() => handleSend(q)}
+                className="shrink-0 bg-white border border-slate-200 rounded-full px-3 py-1.5 text-xs text-slate-600 hover:bg-slate-50 hover:border-primary/30 hover:text-primary transition-colors whitespace-nowrap shadow-sm"
+              >
+                {q}
+              </button>
+            ))}
           </div>
-        )}
+        </div>
 
         {/* Input Area */}
         <div className="p-3 bg-white border-t safe-area-pb">
