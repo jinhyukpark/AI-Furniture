@@ -116,7 +116,11 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
           <div className="flex items-center gap-3 relative z-10">
              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-300 shadow-inner">
-                <Sparkles size={20} className="fill-current drop-shadow-sm" />
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className="drop-shadow-sm">
+                  <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" />
+                  <path d="M18 2L19 5L22 6L19 7L18 10L17 7L14 6L17 5L18 2Z" transform="scale(0.6) translate(10, 0)" />
+                  <path d="M6 4L7 7L10 8L7 9L6 12L5 9L2 8L5 7L6 4Z" transform="scale(0.6) translate(-5, 5)" />
+                </svg>
              </div>
              <div className="text-left">
                 <div className="text-xs font-bold text-rose-500 mb-0.5 flex items-center gap-1">
