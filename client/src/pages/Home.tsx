@@ -2,7 +2,7 @@ import { useState } from "react";
 import { MobileLayout } from "@/components/MobileLayout";
 import { ProductCard } from "@/components/ProductCard";
 import { products } from "@/lib/data";
-import { Search, Bell } from "lucide-react";
+import { Search, Bell, Moon, Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 const CATEGORIES = ["전체", "침실", "거실", "키즈룸", "서재", "주방"];
@@ -43,15 +43,27 @@ export default function Home() {
       {/* Main Content */}
       <div className="p-4 space-y-8">
         {/* Hero / Promo */}
-        <div className="relative rounded-lg overflow-hidden bg-primary aspect-[2/1] shadow-lg">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/40 z-10 p-6 flex flex-col justify-center text-white">
-            <Badge className="w-fit mb-2 bg-white/20 hover:bg-white/30 text-white border-none">AI 큐레이터</Badge>
-            <h2 className="text-2xl font-bold leading-tight mb-2">박진혁님<br/>오늘 하루도 수고 많으셨어요</h2>
-            <p className="text-sm opacity-90 mb-4">아이들을 위한 따뜻한 방, 한번쯤 생각해보지 않으셨나요?<br/>제가 그 상상을 현실로 그려드릴게요.</p>
+        <div className="relative rounded-lg overflow-hidden bg-primary aspect-[2/1] shadow-lg group">
+          {/* Deep Evening Gradient Background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#1e1b4b] via-[#4c0519] to-primary z-0"></div>
+          
+          {/* Stars */}
+          <div className="absolute top-4 right-10 w-1 h-1 bg-white/60 rounded-full animate-pulse duration-1000"></div>
+          <div className="absolute top-10 right-20 w-0.5 h-0.5 bg-white/40 rounded-full animate-pulse delay-300"></div>
+          <div className="absolute bottom-10 left-1/2 w-0.5 h-0.5 bg-white/30 rounded-full animate-pulse delay-700"></div>
+
+          {/* Content */}
+          <div className="relative z-10 p-6 flex flex-col justify-center text-white h-full">
+            <Badge className="w-fit mb-2 bg-white/20 hover:bg-white/30 text-white border-none backdrop-blur-sm flex items-center gap-1">
+              <Moon size={10} className="fill-current" /> AI 큐레이터
+            </Badge>
+            <h2 className="text-2xl font-bold leading-tight mb-2 drop-shadow-md">박진혁님<br/>오늘 하루도 수고 많으셨어요</h2>
+            <p className="text-sm text-white/90 mb-4 drop-shadow-sm">아이들을 위한 따뜻한 방, 한번쯤 생각해보지 않으셨나요?<br/>제가 그 상상을 현실로 그려드릴게요.</p>
           </div>
-          {/* Abstract circles or pattern */}
-          <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-white/20 rounded-full blur-2xl"></div>
-          <div className="absolute top-10 right-20 w-20 h-20 bg-accent/30 rounded-full blur-xl"></div>
+          
+          {/* Abstract circles or pattern - Updated for evening vibe */}
+          <div className="absolute -right-4 -bottom-10 w-40 h-40 bg-orange-500/20 rounded-full blur-3xl"></div>
+          <div className="absolute top-[-20%] right-[-10%] w-32 h-32 bg-purple-500/20 rounded-full blur-2xl"></div>
         </div>
 
         {/* Featured Products */}
