@@ -45,9 +45,9 @@ export default function Home() {
         {/* Hero / Promo */}
         <div className="relative rounded-2xl overflow-hidden bg-primary aspect-[2/1] shadow-lg">
           <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/40 z-10 p-6 flex flex-col justify-center text-white">
-            <Badge className="w-fit mb-2 bg-white/20 hover:bg-white/30 text-white border-none">AI 신기능</Badge>
-            <h2 className="text-2xl font-bold leading-tight mb-2">꿈꾸던 공간을<br/>디자인해보세요</h2>
-            <p className="text-sm opacity-90 mb-4">AI 채팅으로 나만의 방을 시각화하세요.</p>
+            <Badge className="w-fit mb-2 bg-white/20 hover:bg-white/30 text-white border-none">AI 큐레이터</Badge>
+            <h2 className="text-2xl font-bold leading-tight mb-2">오늘 하루도<br/>수고 많으셨어요</h2>
+            <p className="text-sm opacity-90 mb-4">아이들을 위한 따뜻한 방, 한번쯤 생각해보지 않으셨나요?<br/>제가 그 상상을 현실로 그려드릴게요.</p>
           </div>
           {/* Abstract circles or pattern */}
           <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-white/20 rounded-full blur-2xl"></div>
