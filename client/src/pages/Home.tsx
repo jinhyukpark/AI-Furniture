@@ -14,13 +14,13 @@ export default function Home() {
     {
       id: 1,
       top: "30%",
-      left: "25%",
+      left: "35%",
       label: "모니터 조명",
       questions: ["이 조명 제품 정보 알려줘", "눈 피로도에 좋은가요?", "가격이 궁금해요"]
     },
     {
       id: 2,
-      top: "50%",
+      top: "55%",
       left: "50%",
       label: "모션 데스크",
       questions: ["높이 조절 범위는?", "상판 사이즈 변경 가능한가요?", "배송 얼마나 걸려요?"]
@@ -28,7 +28,7 @@ export default function Home() {
     {
       id: 3,
       top: "70%",
-      left: "75%", // Adjusted from bottom: 30% right: 25% approx
+      left: "25%",
       label: "메쉬 의자",
       questions: ["허리 지지대 있나요?", "색상 옵션 보여줘", "AS 기간은 어떻게 되나요?"]
     }
@@ -57,8 +57,7 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-transparent pointer-events-none" />
         
-        {/* Emotional Copy */}
-        <div className="absolute top-8 left-6 z-10 pointer-events-none">
+        <div className="absolute top-8 right-6 z-10 pointer-events-none text-right">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -85,16 +84,16 @@ export default function Home() {
                 e.stopPropagation();
                 setActiveHotspot(activeHotspot === hotspot.id ? null : hotspot.id);
               }}
-              className={`relative group flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 ${
+              className={`relative group flex items-center justify-center w-8 h-8 rounded-full transition-all duration-300 ${
                 activeHotspot === hotspot.id 
                   ? "bg-white text-primary shadow-lg scale-110" 
                   : "bg-white/20 backdrop-blur-md border border-white/60 text-white hover:bg-white/40 hover:scale-105"
               }`}
             >
               {activeHotspot === hotspot.id ? (
-                 <X size={20} />
+                 <X size={14} />
               ) : (
-                 <Sparkles size={20} className={activeHotspot === null ? "animate-pulse" : ""} />
+                 <Sparkles size={14} className={activeHotspot === null ? "animate-pulse" : ""} />
               )}
               
               {/* Ping animation ring */}
