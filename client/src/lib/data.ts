@@ -1,5 +1,5 @@
 import deskImage from '@assets/generated_images/modern_minimalist_white_desk_for_home_office.png';
-import bookshelfImage from '@assets/generated_images/modern_white_bookshelf_with_decor.png';
+import bookshelfImage from '@assets/generated_images/wide_modern_white_bookshelf_filling_the_frame.png';
 import kidsBedImage from '@assets/generated_images/modern_kids_single_bed_white_wood.png';
 import spaceRoomImage from '@assets/generated_images/space_themed_kids_bedroom_with_modern_furniture.png';
 
@@ -19,7 +19,7 @@ export const products = [
     price: 189000,
     category: "서재",
     image: bookshelfImage,
-    description: "깔끔한 화이트 톤의 5단 책장입니다. 넉넉한 수납공간과 미니멀한 디자인.",
+    description: "깔끔한 화이트 톤의 책장입니다. 넉넉한 수납공간과 미니멀한 디자인.",
     features: ["E0 등급 목재", "견고한 선반", "모던 디자인"]
   },
   {
