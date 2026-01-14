@@ -149,10 +149,10 @@ export default function ProductDetail() {
                       <Popover key={item.id} open={openPopoverId === item.id} onOpenChange={(open) => setOpenPopoverId(open ? item.id : null)}>
                         <PopoverTrigger asChild>
                           <button
-                            className="absolute w-12 h-12 -ml-6 -mt-6 rounded-full bg-white/40 backdrop-blur-md border-2 border-white flex items-center justify-center text-white shadow-[0_0_20px_rgba(255,255,255,0.6)] z-20 hover:scale-110 transition-transform cursor-pointer group"
+                            className="absolute w-8 h-8 -ml-4 -mt-4 rounded-full bg-white/40 backdrop-blur-md border border-white flex items-center justify-center text-white shadow-[0_0_15px_rgba(255,255,255,0.5)] z-20 hover:scale-110 transition-transform cursor-pointer group"
                             style={{ left: `${item.x}%`, top: `${item.y}%` }}
                           >
-                            <Sparkles size={20} className="fill-white animate-pulse" />
+                            <Sparkles size={14} className="fill-white animate-pulse" />
                             <div className="absolute inset-0 rounded-full bg-white/40 animate-ping duration-[1500ms]" />
                           </button>
                         </PopoverTrigger>
