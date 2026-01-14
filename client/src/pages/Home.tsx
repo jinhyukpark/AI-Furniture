@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { MobileLayout } from "@/components/MobileLayout";
 import { ProductCard } from "@/components/ProductCard";
 import { products } from "@/lib/data";
-import { Search, Bell, Moon, ArrowRight, Sparkles, X, MessageCircle, Send, ChevronLeft, ChevronRight, Gift, Heart, User, Star } from "lucide-react";
+import { Search, Bell, Moon, ArrowRight, Sparkles, X, MessageCircle, Send, ChevronLeft, ChevronRight, Gift, Heart, User, Star, MapPin, Tag } from "lucide-react";
 import bedroomImage from '@assets/stock_images/cozy_bedroom_with_be_4819121e.jpg';
 import livingImage from '@assets/stock_images/modern_living_room_w_32e2ad7a.jpg';
 import diningImage from '@assets/stock_images/white_dining_room_wi_e1e8f705.jpg';
@@ -359,6 +359,33 @@ export default function Home() {
               />
             ))}
           </div>
+        </div>
+
+        {/* Quick Links: Store & Refurb */}
+        <div className="flex justify-center gap-16 pb-12 mt-8">
+          <Link href="/store">
+            <div className="flex flex-col items-center gap-3 cursor-pointer group">
+              <div className="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 group-hover:bg-slate-200 transition-colors">
+                <MapPin size={28} strokeWidth={1.5} />
+              </div>
+              <div className="text-center">
+                <div className="text-sm font-medium text-slate-900">Store</div>
+                <div className="text-xs text-slate-500 mt-0.5">매장안내</div>
+              </div>
+            </div>
+          </Link>
+          
+          <Link href="/refurb">
+            <div className="flex flex-col items-center gap-3 cursor-pointer group">
+              <div className="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 group-hover:bg-slate-200 transition-colors">
+                <Tag size={28} strokeWidth={1.5} />
+              </div>
+              <div className="text-center">
+                <div className="text-sm font-medium text-slate-900">Refurb</div>
+                <div className="text-xs text-slate-500 mt-0.5">전시품 판매</div>
+              </div>
+            </div>
+          </Link>
         </div>
       </div>
     </MobileLayout>
