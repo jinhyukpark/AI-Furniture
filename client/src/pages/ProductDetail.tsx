@@ -2,12 +2,13 @@ import { useState, useEffect } from "react";
 import { MobileLayout } from "@/components/MobileLayout";
 import { products } from "@/lib/data";
 import { useRoute, useLocation } from "wouter";
-import { ArrowLeft, Share2, Heart, ShoppingBag, Sparkles, Wand2, Check, ChevronRight } from "lucide-react";
+import { ArrowLeft, Share2, Heart, ShoppingBag, Sparkles, Wand2, Check, ChevronRight, X, MessageCircle, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { motion, AnimatePresence } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 export default function ProductDetail() {
   const [match, params] = useRoute("/product/:id");
@@ -16,8 +17,16 @@ export default function ProductDetail() {
   const [isPicked, setIsPicked] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
   const [activeTab, setActiveTab] = useState("detail");
+  const [openPopoverId, setOpenPopoverId] = useState<number | null>(null);
   
   const product = products.find(p => p.id === Number(params?.id));
+
+  // Interactive items coordinates (percentages) for Product ID 1 (Roy Motion Desk)
+  const interactiveItems = product?.id === 1 ? [
+    { id: 101, name: "모션 데스크", x: 55, y: 55, questions: ["높이 조절 범위는?", "상판 재질은 무엇인가요?", "설치 서비스가 포함되나요?"] },
+    { id: 102, name: "메쉬 의자", x: 30, y: 65, questions: ["장시간 앉아도 편한가요?", "헤드레스트 조절 되나요?", "바퀴 소음은 없나요?"] },
+    { id: 103, name: "스마트 램프", x: 33, y: 30, questions: ["스마트폰 연동 되나요?", "수명은 얼마나 되나요?", "눈부심 방지 기능이 있나요?"] },
+  ] : [];
 
   useEffect(() => {
     if (showNotification) {
@@ -100,13 +109,76 @@ export default function ProductDetail() {
           </div>
         </div>
 
-        {/* Hero Image */}
+        {/* Hero Image with Interactive Hotspots */}
         <div className="relative aspect-[4/5] bg-slate-100">
           <img 
             src={product.image} 
             alt={product.name} 
             className="w-full h-full object-cover"
           />
+
+          {/* Interactive Popups for ID 1 */}
+          {interactiveItems.map((item) => (
+            <Popover key={item.id} open={openPopoverId === item.id} onOpenChange={(open) => setOpenPopoverId(open ? item.id : null)}>
+              <PopoverTrigger asChild>
+                <button
+                  className="absolute w-8 h-8 -ml-4 -mt-4 rounded-full bg-white/20 backdrop-blur-md border border-white/60 flex items-center justify-center text-white shadow-[0_0_15px_rgba(255,255,255,0.5)] z-20 hover:scale-110 transition-transform cursor-pointer group"
+                  style={{ left: `${item.x}%`, top: `${item.y}%` }}
+                >
+                  <Sparkles size={14} className="fill-white animate-pulse" />
+                  <div className="absolute inset-0 rounded-full bg-white/30 animate-ping duration-[2000ms]" />
+                </button>
+              </PopoverTrigger>
+              <PopoverContent 
+                className="w-[260px] p-0 bg-white/95 backdrop-blur-xl border-none shadow-2xl rounded-2xl overflow-hidden z-50 animate-in zoom-in-95 duration-200" 
+                side="bottom"
+                sideOffset={10}
+                align="center"
+              >
+                <div className="relative">
+                  {/* Header */}
+                  <div className="px-4 py-3 bg-gradient-to-r from-primary/10 to-transparent border-b border-slate-100 flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <Sparkles size={14} className="text-primary fill-current" />
+                      <span className="font-bold text-sm text-primary">AI 큐레이터</span>
+                    </div>
+                    <button onClick={() => setOpenPopoverId(null)} className="text-slate-400 hover:text-slate-600">
+                      <X size={16} />
+                    </button>
+                  </div>
+                  
+                  {/* Body */}
+                  <div className="p-4">
+                    <h4 className="font-bold text-base mb-1">{item.name}</h4>
+                    <p className="text-xs text-muted-foreground mb-4">이 제품에 대해 궁금한 점을 알려주세요.</p>
+                    
+                    <div className="space-y-2 mb-4">
+                      {item.questions.map((q, idx) => (
+                        <button 
+                          key={idx}
+                          className="w-full text-left px-3 py-2 rounded-lg bg-slate-50 hover:bg-slate-100 text-xs text-slate-700 transition-colors flex items-center justify-between group"
+                        >
+                          <span>{q}</span>
+                          <MessageCircle size={12} className="text-slate-300 group-hover:text-primary transition-colors" />
+                        </button>
+                      ))}
+                    </div>
+
+                    <div className="relative">
+                      <input 
+                        type="text" 
+                        placeholder="직접 질문 입력하기..." 
+                        className="w-full pl-3 pr-9 py-2 rounded-full bg-slate-50 border border-slate-200 text-xs focus:outline-none focus:border-primary/50 transition-colors"
+                      />
+                      <button className="absolute right-1 top-1 w-7 h-7 rounded-full bg-primary flex items-center justify-center text-white hover:bg-primary/90 transition-colors">
+                        <Send size={12} />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </PopoverContent>
+            </Popover>
+          ))}
         </div>
 
         {/* Content Container */}
