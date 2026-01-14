@@ -128,35 +128,55 @@ export default function Home() {
           </div>
         </div>
         
-        {/* Editorial Section */}
-        <div className="mt-12 bg-slate-50 rounded-2xl p-6 border border-slate-100">
-          <div className="flex items-center gap-2 mb-2">
-            <Sparkles size={16} className="text-primary fill-current" />
-            <h3 className="font-bold text-lg text-slate-800">AI 예산 큐레이터</h3>
+        {/* Editorial Section - Redesigned */}
+        <div className="mt-12 px-2">
+          <div className="flex items-center justify-between mb-6">
+             <div>
+                <div className="flex items-center gap-1.5 mb-1">
+                   <Sparkles size={14} className="text-primary" />
+                   <span className="text-xs font-bold text-primary uppercase tracking-wider">AI Budget Curator</span>
+                </div>
+                <h3 className="font-serif text-xl text-slate-800">합리적인 <span className="italic">취향</span>의 발견</h3>
+             </div>
           </div>
-          <p className="text-sm text-slate-500 mb-5">예산은 아끼고 감성은 채우는 스마트한 제안.</p>
           
-          <div className="space-y-3">
-            <div className="bg-white rounded-xl p-4 shadow-sm border border-slate-100 flex gap-4 items-center group cursor-pointer hover:border-primary/30 transition-colors">
-               <div className="w-16 h-16 rounded-lg bg-indigo-50 flex items-center justify-center shrink-0">
-                 <span className="text-2xl">🧸</span>
+          <div className="grid gap-4">
+            {/* Card 1 */}
+            <div className="bg-white border border-slate-100 rounded-xl p-5 shadow-sm hover:shadow-md transition-all cursor-pointer group relative overflow-hidden">
+               <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                  <Sparkles size={60} className="text-slate-800" />
                </div>
-               <div className="flex-1">
-                 <h4 className="font-bold text-slate-800 text-sm mb-1 group-hover:text-primary transition-colors">내 아이 방 34만원에 완성하기</h4>
-                 <p className="text-xs text-slate-500 line-clamp-1">남부럽지 않은 키즈룸 꾸미기, 가성비 끝판왕 조합.</p>
+               
+               <div className="relative z-10">
+                 <span className="inline-block px-2 py-1 bg-slate-100 rounded text-[10px] font-medium text-slate-600 mb-3">KIDS ROOM</span>
+                 <h4 className="text-lg font-medium text-slate-900 mb-1 leading-snug">
+                   내 아이 방 <br/>
+                   <span className="font-serif italic font-bold text-2xl">34만원</span>에 완성하기
+                 </h4>
+                 <div className="h-px w-8 bg-slate-300 my-4 group-hover:w-12 transition-all" />
+                 <p className="text-xs text-slate-500 leading-relaxed max-w-[80%]">
+                   아이의 꿈을 키워주는 공간, <br/>예산 부담 없이 완벽하게.
+                 </p>
                </div>
-               <ArrowRight size={16} className="text-slate-300 group-hover:text-primary transition-colors" />
             </div>
 
-            <div className="bg-white rounded-xl p-4 shadow-sm border border-slate-100 flex gap-4 items-center group cursor-pointer hover:border-primary/30 transition-colors">
-               <div className="w-16 h-16 rounded-lg bg-rose-50 flex items-center justify-center shrink-0">
-                 <span className="text-2xl">🏷️</span>
+            {/* Card 2 */}
+            <div className="bg-slate-900 rounded-xl p-5 shadow-sm hover:shadow-md transition-all cursor-pointer group relative overflow-hidden text-white">
+               <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                  <span className="text-6xl font-serif italic">%</span>
                </div>
-               <div className="flex-1">
-                 <h4 className="font-bold text-slate-800 text-sm mb-1 group-hover:text-primary transition-colors">서재 꾸미기 50% 할인 꿀팁</h4>
-                 <p className="text-xs text-slate-500 line-clamp-1">놓치면 후회하는 기간 한정 이벤트 활용법.</p>
+               
+               <div className="relative z-10">
+                 <span className="inline-block px-2 py-1 bg-white/10 backdrop-blur-sm rounded text-[10px] font-medium text-slate-200 mb-3">HOME OFFICE</span>
+                 <h4 className="text-lg font-medium text-white mb-1 leading-snug">
+                   서재 인테리어 <br/>
+                   <span className="font-serif italic font-bold text-2xl">50%</span> 혜택 가이드
+                 </h4>
+                 <div className="h-px w-8 bg-white/30 my-4 group-hover:w-12 transition-all" />
+                 <p className="text-xs text-slate-300 leading-relaxed max-w-[80%]">
+                   놓치면 후회하는 기간 한정 <br/>스마트 쇼핑 전략.
+                 </p>
                </div>
-               <ArrowRight size={16} className="text-slate-300 group-hover:text-primary transition-colors" />
             </div>
           </div>
         </div>
