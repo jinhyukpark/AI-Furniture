@@ -129,11 +129,35 @@ export default function Home() {
         </div>
         
         {/* Editorial Section */}
-        <div className="bg-secondary/50 rounded-lg p-6">
-          <h3 className="font-serif text-xl font-medium mb-2">에디터의 픽</h3>
-          <p className="text-sm text-muted-foreground mb-4">모던 미니멀리스트 홈을 위한 엄선된 컬렉션.</p>
-          <div className="h-32 bg-white rounded-xl flex items-center justify-center text-muted-foreground text-sm border border-dashed">
-            에디토리얼 콘텐츠 영역
+        <div className="mt-12 bg-slate-50 rounded-2xl p-6 border border-slate-100">
+          <div className="flex items-center gap-2 mb-2">
+            <Sparkles size={16} className="text-primary fill-current" />
+            <h3 className="font-bold text-lg text-slate-800">AI 예산 큐레이터</h3>
+          </div>
+          <p className="text-sm text-slate-500 mb-5">예산은 아끼고 감성은 채우는 스마트한 제안.</p>
+          
+          <div className="space-y-3">
+            <div className="bg-white rounded-xl p-4 shadow-sm border border-slate-100 flex gap-4 items-center group cursor-pointer hover:border-primary/30 transition-colors">
+               <div className="w-16 h-16 rounded-lg bg-indigo-50 flex items-center justify-center shrink-0">
+                 <span className="text-2xl">🧸</span>
+               </div>
+               <div className="flex-1">
+                 <h4 className="font-bold text-slate-800 text-sm mb-1 group-hover:text-primary transition-colors">내 아이 방 34만원에 완성하기</h4>
+                 <p className="text-xs text-slate-500 line-clamp-1">남부럽지 않은 키즈룸 꾸미기, 가성비 끝판왕 조합.</p>
+               </div>
+               <ArrowRight size={16} className="text-slate-300 group-hover:text-primary transition-colors" />
+            </div>
+
+            <div className="bg-white rounded-xl p-4 shadow-sm border border-slate-100 flex gap-4 items-center group cursor-pointer hover:border-primary/30 transition-colors">
+               <div className="w-16 h-16 rounded-lg bg-rose-50 flex items-center justify-center shrink-0">
+                 <span className="text-2xl">🏷️</span>
+               </div>
+               <div className="flex-1">
+                 <h4 className="font-bold text-slate-800 text-sm mb-1 group-hover:text-primary transition-colors">서재 꾸미기 50% 할인 꿀팁</h4>
+                 <p className="text-xs text-slate-500 line-clamp-1">놓치면 후회하는 기간 한정 이벤트 활용법.</p>
+               </div>
+               <ArrowRight size={16} className="text-slate-300 group-hover:text-primary transition-colors" />
+            </div>
           </div>
         </div>
       </div>
