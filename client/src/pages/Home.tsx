@@ -46,13 +46,7 @@ export default function Home() {
             </div>
         </div>
 
-        {/* Floating Search/Question Bar */}
-        <div className="absolute top-4 left-4 right-4 z-10">
-          <div className="bg-white/90 backdrop-blur-md rounded-full shadow-lg p-3 flex items-center gap-3">
-             <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-             <span className="text-sm text-slate-600 font-medium">궁금한 내용을 물어보세요</span>
-          </div>
-        </div>
+        {/* Floating Search/Question Bar - Removed */}
       </div>
 
       {/* Main Content */}
