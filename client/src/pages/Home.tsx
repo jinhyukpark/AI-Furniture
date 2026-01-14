@@ -14,6 +14,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function Home() {
   const [activeHotspot, setActiveHotspot] = useState<number | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [showPromoBanner, setShowPromoBanner] = useState(true);
   const heroImages = products.slice(0, 4).map(p => p.image);
   
   const iloomLifeItems = [
@@ -144,35 +145,60 @@ export default function Home() {
       {/* Main Content */}
       <div className="p-4 pt-6">
         {/* AI Curator Promo Banner */}
-        <button 
-          onClick={() => window.location.href='/chat'}
-          className="w-full bg-gradient-to-br from-[#E33B4E] to-[#FF6B6B] rounded-xl mb-8 flex items-center justify-between px-6 py-5 shadow-[0_8px_30px_rgb(227,59,78,0.15)] hover:shadow-[0_8px_30px_rgb(227,59,78,0.25)] transition-all duration-300 group relative overflow-hidden h-28 text-white border border-white/10"
-        >
-          {/* Subtle noise texture overlay */}
-          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}></div>
-          
-          <div className="relative z-10 text-left flex flex-col justify-center h-full">
-             <div className="text-xl leading-snug mb-2 font-serif tracking-tight">
-               <span className="font-bold border-b border-white/30 pb-0.5">박진혁</span>님을 위한<br/>
-               프리미엄 큐레이션
-             </div>
-             <div className="text-xs font-light opacity-90 flex items-center gap-1 mt-1 tracking-wide">
-               취향이 깃든 공간을 발견해보세요 <ChevronRight size={12} />
-             </div>
-          </div>
-          
-          <div className="relative z-10 opacity-90 transform group-hover:scale-110 transition-transform duration-500">
-            <svg width="52" height="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="drop-shadow-lg">
-              <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="currentColor" />
-              <path d="M18 2L19 5L22 6L19 7L18 10L17 7L14 6L17 5L18 2Z" fill="currentColor" fillOpacity="0.7" transform="scale(0.7) translate(8, 0)" />
-              <path d="M6 4L7 7L10 8L7 9L6 12L5 9L2 8L5 7L6 4Z" fill="currentColor" fillOpacity="0.7" transform="scale(0.7) translate(-3, 3)" />
-            </svg>
-          </div>
-          
-          {/* Decorative abstract shapes */}
-          <div className="absolute -right-8 -top-8 w-32 h-32 bg-white/10 rounded-full blur-3xl" />
-          <div className="absolute -left-8 -bottom-8 w-32 h-32 bg-rose-900/10 rounded-full blur-3xl" />
-        </button>
+        <AnimatePresence>
+          {showPromoBanner && (
+            <motion.div
+              initial={{ opacity: 0, height: 0, marginBottom: 0 }}
+              animate={{ opacity: 1, height: "auto", marginBottom: 32 }}
+              exit={{ opacity: 0, height: 0, marginBottom: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="relative group/banner">
+                <button 
+                  onClick={() => window.location.href='/chat'}
+                  className="w-full bg-gradient-to-br from-[#E33B4E] to-[#FF6B6B] rounded-xl flex items-center justify-between px-6 py-5 shadow-[0_8px_30px_rgb(227,59,78,0.15)] hover:shadow-[0_8px_30px_rgb(227,59,78,0.25)] transition-all duration-300 relative overflow-hidden h-28 text-white border border-white/10"
+                >
+                  {/* Subtle noise texture overlay */}
+                  <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}></div>
+                  
+                  <div className="relative z-10 text-left flex flex-col justify-center h-full">
+                     <div className="text-xl leading-snug mb-2 font-serif tracking-tight">
+                       <span className="font-bold border-b border-white/30 pb-0.5">박진혁</span>님을 위한<br/>
+                       프리미엄 큐레이션
+                     </div>
+                     <div className="text-xs font-light opacity-90 flex items-center gap-1 mt-1 tracking-wide">
+                       취향이 깃든 공간을 발견해보세요 <ChevronRight size={12} />
+                     </div>
+                  </div>
+                  
+                  <div className="relative z-10 opacity-90 transform group-hover/banner:scale-110 transition-transform duration-500">
+                    <svg width="52" height="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="drop-shadow-lg">
+                      <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="currentColor" />
+                      <path d="M18 2L19 5L22 6L19 7L18 10L17 7L14 6L17 5L18 2Z" fill="currentColor" fillOpacity="0.7" transform="scale(0.7) translate(8, 0)" />
+                      <path d="M6 4L7 7L10 8L7 9L6 12L5 9L2 8L5 7L6 4Z" fill="currentColor" fillOpacity="0.7" transform="scale(0.7) translate(-3, 3)" />
+                    </svg>
+                  </div>
+                  
+                  {/* Decorative abstract shapes */}
+                  <div className="absolute -right-8 -top-8 w-32 h-32 bg-white/10 rounded-full blur-3xl" />
+                  <div className="absolute -left-8 -bottom-8 w-32 h-32 bg-rose-900/10 rounded-full blur-3xl" />
+                </button>
+                
+                {/* Close Button - Appears on hover */}
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setShowPromoBanner(false);
+                  }}
+                  className="absolute top-2 right-2 p-1.5 rounded-full bg-black/10 hover:bg-black/20 text-white/80 hover:text-white transition-all duration-200 opacity-0 group-hover/banner:opacity-100 z-20 backdrop-blur-sm"
+                  aria-label="닫기"
+                >
+                  <X size={14} />
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Featured Products */}
         <div>
