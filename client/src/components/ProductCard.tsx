@@ -25,9 +25,9 @@ export function ProductCard({ product, onClick }: ProductCardProps) {
         <img 
           src={product.image} 
           alt={product.name}
-          className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
-        <button className="absolute bottom-3 right-3 h-8 w-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-sm text-primary hover:bg-primary hover:text-white transition-colors">
+        <button className="absolute bottom-3 right-3 h-8 w-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-sm text-primary hover:bg-primary hover:text-white transition-colors z-10">
           <Plus size={18} />
         </button>
       </div>
