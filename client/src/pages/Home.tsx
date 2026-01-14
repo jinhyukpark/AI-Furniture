@@ -2,7 +2,7 @@ import { useState } from "react";
 import { MobileLayout } from "@/components/MobileLayout";
 import { ProductCard } from "@/components/ProductCard";
 import { products } from "@/lib/data";
-import { Search, Bell, Moon, ArrowRight, Sparkles, X, MessageCircle, Send, ChevronLeft, ChevronRight } from "lucide-react";
+import { Search, Bell, Moon, ArrowRight, Sparkles, X, MessageCircle, Send, ChevronLeft, ChevronRight, Gift } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
@@ -158,7 +158,7 @@ export default function Home() {
           <div className="flex items-center justify-between mb-6">
              <div>
                 <div className="flex items-center gap-1.5 mb-1">
-                   <Sparkles size={14} className="text-primary" />
+                   <Gift size={14} className="text-primary" />
                    <span className="text-xs font-bold text-primary uppercase tracking-wider">기획전</span>
                 </div>
                 <h3 className="font-serif text-xl text-slate-800">합리적인 취향의 발견</h3>
