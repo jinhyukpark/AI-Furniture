@@ -114,7 +114,7 @@ export default function Home() {
           className="w-full bg-[#C8102E] rounded-xl mb-8 flex items-center justify-between px-5 py-4 shadow-sm hover:shadow-md transition-all group relative overflow-hidden h-24 text-white"
         >
           <div className="relative z-10 text-left">
-             <div className="font-bold text-lg leading-tight mb-1">박진혁님만을 위한 큐레이팅 상품</div>
+             <div className="text-lg leading-tight mb-1 font-normal"><span className="font-bold">박진혁</span>님만을 위한 큐레이팅 상품</div>
              <div className="text-xs font-medium opacity-90 flex items-center gap-1">
                더 많은 혜택 받아가세요 <ChevronRight size={14} />
              </div>
