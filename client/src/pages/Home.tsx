@@ -107,7 +107,29 @@ export default function Home() {
       </div>
 
       {/* Main Content */}
-      <div className="p-4 pt-8">
+      <div className="p-4 pt-6">
+        {/* AI Curator Promo Banner */}
+        <button 
+          onClick={() => window.location.href='/chat'}
+          className="w-full bg-white border border-slate-100 rounded-2xl p-4 mb-8 flex items-center justify-between group shadow-lg shadow-slate-200/50 hover:shadow-xl hover:shadow-slate-200/60 transition-all -mt-12 relative z-30"
+        >
+          <div className="flex items-center gap-3">
+             <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-300">
+                <Sparkles size={20} className="fill-current" />
+             </div>
+             <div className="text-left">
+                <div className="text-[10px] font-bold text-rose-500 mb-0.5 flex items-center gap-1">
+                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse" />
+                  놓치면 손해!
+                </div>
+                <div className="font-bold text-slate-800 text-sm">AI 큐레이터가 추천 큐레이팅</div>
+             </div>
+          </div>
+          <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+            <ArrowRight size={16} />
+          </div>
+        </button>
+
         {/* Featured Products */}
         <div>
           <div className="flex items-center justify-between mb-8">
