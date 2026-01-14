@@ -2,6 +2,7 @@ import deskImage from '@assets/generated_images/modern_minimalist_white_desk_for
 import bookshelfImage from '@assets/generated_images/wide_modern_white_bookshelf_filling_the_frame.png';
 import kidsBedImage from '@assets/generated_images/modern_kids_single_bed_white_wood.png';
 import roomSceneImage from '@assets/room_scene_interactive.png';
+import lampImage from '@assets/generated_images/modern_smart_desk_lamp.png';
 
 export const products = [
   {
@@ -45,7 +46,7 @@ export const products = [
     name: "루미 스마트 램프",
     price: 79000,
     category: "조명",
-    image: roomSceneImage,
+    image: lampImage,
     description: "앱으로 제어하는 스마트 조명. 학습 모드와 휴식 모드를 지원합니다.",
     features: ["앱 제어", "밝기 조절", "색온도 조절"]
   }
