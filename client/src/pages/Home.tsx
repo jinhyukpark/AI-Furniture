@@ -53,7 +53,6 @@ export default function Home() {
           src={products[0].image} 
           alt="Main Hero" 
           className="w-full h-full object-cover"
-          onClick={() => setActiveHotspot(null)}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
         
@@ -70,85 +69,6 @@ export default function Home() {
             </h2>
           </motion.div>
         </div>
-        
-        {/* Hotspots */}
-        {HOTSPOTS.map((hotspot) => (
-          <div 
-            key={hotspot.id}
-            className="absolute z-10"
-            style={{ top: hotspot.top, left: hotspot.left }}
-          >
-            {/* The Hotspot Button */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setActiveHotspot(activeHotspot === hotspot.id ? null : hotspot.id);
-              }}
-              className={`relative group flex items-center justify-center w-8 h-8 rounded-full transition-all duration-300 ${
-                activeHotspot === hotspot.id 
-                  ? "bg-white text-primary shadow-lg scale-110" 
-                  : "bg-white/20 backdrop-blur-md border border-white/60 text-white hover:bg-white/40 hover:scale-105"
-              }`}
-            >
-              {activeHotspot === hotspot.id ? (
-                 <X size={14} />
-              ) : (
-                 <Sparkles size={14} className={activeHotspot === null ? "animate-pulse" : ""} />
-              )}
-              
-              {/* Ping animation ring */}
-              {activeHotspot !== hotspot.id && (
-                <span className="absolute inline-flex h-full w-full rounded-full bg-white opacity-30 animate-ping duration-1000"></span>
-              )}
-            </button>
-
-            {/* Popover / Dialog for Questions */}
-            <AnimatePresence>
-              {activeHotspot === hotspot.id && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                  className="absolute left-1/2 -translate-x-1/2 mt-3 w-[280px] bg-white rounded-[20px] shadow-2xl p-5 z-50 origin-top text-left"
-                >
-                  <div className="flex justify-between items-center mb-4">
-                    <div className="flex items-center gap-1.5 text-primary font-bold">
-                       <Sparkles size={16} className="fill-current" /> AI 큐레이터
-                    </div>
-                    <button onClick={(e) => { e.stopPropagation(); setActiveHotspot(null); }}>
-                        <X size={18} className="text-slate-400" />
-                    </button>
-                  </div>
-
-                  <h3 className="text-lg font-bold text-slate-900 mb-1">{hotspot.label}</h3>
-                  <p className="text-xs text-slate-500 mb-4">이 제품에 대해 궁금한 점을 알려주세요.</p>
-
-                  <div className="space-y-2 mb-4">
-                    {hotspot.questions.map((q, idx) => (
-                      <Link key={idx} href={`/chat?q=${encodeURIComponent(q)}`}>
-                        <button className="w-full text-left bg-slate-50 hover:bg-slate-100 p-3 rounded-xl text-sm text-slate-700 flex justify-between items-center transition-colors group">
-                          {q}
-                          <MessageCircle size={14} className="text-slate-300 group-hover:text-primary transition-colors" />
-                        </button>
-                      </Link>
-                    ))}
-                  </div>
-
-                  <div className="relative">
-                     <input 
-                        className="w-full bg-slate-50 rounded-full py-2.5 pl-4 pr-10 text-sm border-none focus:ring-1 focus:ring-primary placeholder:text-slate-400" 
-                        placeholder="직접 질문 입력하기..." 
-                        onClick={(e) => e.stopPropagation()}
-                     />
-                     <button className="absolute right-1 top-1 w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white">
-                        <Send size={14} />
-                     </button>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        ))}
       </div>
 
       {/* Main Content */}
