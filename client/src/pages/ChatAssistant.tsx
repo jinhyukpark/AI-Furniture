@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from "react";
 import { MobileLayout } from "@/components/MobileLayout";
-import { Send, Bot, Sparkles, Image as ImageIcon, FileText, ChevronRight, Plus } from "lucide-react";
+import { Send, Sparkles, Image as ImageIcon, FileText, Plus } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { spaceConcept } from "@/lib/data";
 import { useLocation } from "wouter";
 
@@ -20,7 +20,7 @@ export default function ChatAssistant() {
     {
       id: "1",
       role: "assistant",
-      content: "Hello! I'm your iloom design assistant. I can help you find furniture, visualize your room, or get a quotation. How can I help you today?",
+      content: "안녕하세요! 일룸 AI 디자인 어시스턴트입니다. 가구 추천, 공간 시각화, 견적서 발급을 도와드릴 수 있어요. 무엇을 도와드릴까요?",
       type: "text"
     }
   ]);
@@ -50,33 +50,34 @@ export default function ChatAssistant() {
       let aiResponse: Message = {
         id: (Date.now() + 1).toString(),
         role: "assistant",
-        content: "I can definitely help with that.",
+        content: "네, 알겠습니다.",
         type: "text"
       };
 
       const lowerInput = userMsg.content.toLowerCase();
 
-      if (lowerInput.includes("kids") || lowerInput.includes("boy") || lowerInput.includes("space")) {
+      // Simple keyword matching for demo purposes
+      if (lowerInput.includes("아이") || lowerInput.includes("아들") || lowerInput.includes("우주") || lowerInput.includes("방")) {
         aiResponse = {
           id: (Date.now() + 1).toString(),
           role: "assistant",
-          content: "That sounds exciting! A space-themed room is great for fostering creativity. I can create a layout using our 'Tinkle' series. Would you like to see a visualization?",
+          content: "정말 멋진 아이디어네요! 우주 테마는 아이들의 창의력을 키우는데 아주 좋습니다. '팅클' 시리즈로 구성해볼 수 있는데, 시각화된 이미지를 보시겠어요?",
           type: "suggestion",
           data: {
             action: "visualize_space",
-            label: "Create Space Room Concept"
+            label: "우주 테마 룸 만들기"
           }
         };
-      } else if (lowerInput.includes("quote") || lowerInput.includes("price") || lowerInput.includes("estimate")) {
+      } else if (lowerInput.includes("견적") || lowerInput.includes("가격") || lowerInput.includes("얼마")) {
         aiResponse = {
           id: (Date.now() + 1).toString(),
           role: "assistant",
-          content: "I've prepared a quotation for the Space Explorer's Room concept based on your preferences.",
+          content: "요청하신 우주 탐험가 룸 컨셉에 대한 예상 견적서입니다.",
           type: "quotation",
           data: spaceConcept
         };
       } else {
-        aiResponse.content = "I see. Could you tell me more about the style you prefer? For example: Modern, Minimalist, or maybe something playful for kids?";
+        aiResponse.content = "그렇군요. 선호하시는 스타일이 있으신가요? 예를 들어, 모던, 미니멀, 혹은 아이들을 위한 장난기 넘치는 스타일 등 구체적으로 말씀해주시면 좋아요.";
       }
 
       setMessages(prev => [...prev, aiResponse]);
@@ -89,7 +90,7 @@ export default function ChatAssistant() {
       setMessages(prev => [...prev, {
         id: Date.now().toString(),
         role: "assistant",
-        content: "Generating your concept room... This might take a moment.",
+        content: "컨셉 룸을 생성하고 있습니다... 잠시만 기다려주세요.",
         type: "text"
       }]);
       
@@ -97,7 +98,7 @@ export default function ChatAssistant() {
         setMessages(prev => [...prev, {
           id: (Date.now() + 1).toString(),
           role: "assistant",
-          content: "Here is the 'Space Explorer' concept room I designed for you.",
+          content: "고객님을 위해 디자인한 '우주 탐험가' 컨셉 룸입니다.",
           type: "visual",
           data: spaceConcept
         }]);
@@ -114,9 +115,9 @@ export default function ChatAssistant() {
             <Sparkles size={16} />
           </div>
           <div>
-            <h1 className="font-bold text-sm">Design Assistant</h1>
+            <h1 className="font-bold text-sm">디자인 어시스턴트</h1>
             <p className="text-xs text-muted-foreground flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span> Online
+              <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span> 온라인
             </p>
           </div>
         </div>
@@ -153,23 +154,23 @@ export default function ChatAssistant() {
                   <div className="mt-3 bg-slate-50 rounded-xl p-3 border">
                     <div className="flex items-center gap-2 mb-2 font-bold text-foreground">
                       <FileText size={14} />
-                      Estimate
+                      예상 견적서
                     </div>
                     <div className="space-y-1 mb-3">
                       <div className="flex justify-between text-xs text-muted-foreground">
-                        <span>Items (2)</span>
-                        <span>{(msg.data.totalPrice - 150000).toLocaleString()} KRW</span>
+                        <span>상품 (2개)</span>
+                        <span>{(msg.data.totalPrice - 150000).toLocaleString()}원</span>
                       </div>
                       <div className="flex justify-between text-xs text-muted-foreground">
-                        <span>Styling</span>
-                        <span>150,000 KRW</span>
+                        <span>스타일링 비용</span>
+                        <span>150,000원</span>
                       </div>
                       <div className="border-t pt-1 mt-1 flex justify-between font-bold text-primary">
-                        <span>Total</span>
-                        <span>{msg.data.totalPrice.toLocaleString()} KRW</span>
+                        <span>총 합계</span>
+                        <span>{msg.data.totalPrice.toLocaleString()}원</span>
                       </div>
                     </div>
-                    <Button size="sm" className="w-full text-xs h-8">View Details</Button>
+                    <Button size="sm" className="w-full text-xs h-8">상세보기</Button>
                   </div>
                 )}
 
@@ -180,7 +181,7 @@ export default function ChatAssistant() {
                        <img src={msg.data.image} alt="Room" className="object-cover w-full h-full" />
                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors flex items-center justify-center">
                           <div className="bg-white/90 backdrop-blur rounded-full px-3 py-1 text-xs font-bold flex items-center gap-1 shadow-lg">
-                            <ImageIcon size={12} /> View Room
+                            <ImageIcon size={12} /> 룸 구경하기
                           </div>
                        </div>
                     </div>
@@ -220,7 +221,7 @@ export default function ChatAssistant() {
               <Input 
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Ask for a room design..." 
+                placeholder="어떤 방을 꾸미고 싶으신가요?" 
                 className="rounded-full bg-slate-100 border-transparent focus:bg-white transition-colors"
               />
               <Button type="submit" size="icon" className="rounded-full shrink-0 h-10 w-10">

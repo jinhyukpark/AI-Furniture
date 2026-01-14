@@ -2,14 +2,13 @@ import { useState } from "react";
 import { MobileLayout } from "@/components/MobileLayout";
 import { ProductCard } from "@/components/ProductCard";
 import { products } from "@/lib/data";
-import { Search, Bell, SlidersHorizontal } from "lucide-react";
-import { Input } from "@/components/ui/input";
+import { Search, Bell } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
-const CATEGORIES = ["All", "Bedroom", "Living", "Kids", "Office", "Kitchen"];
+const CATEGORIES = ["전체", "침실", "거실", "키즈룸", "서재", "주방"];
 
 export default function Home() {
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [activeCategory, setActiveCategory] = useState("전체");
 
   return (
     <MobileLayout>
@@ -46,9 +45,9 @@ export default function Home() {
         {/* Hero / Promo */}
         <div className="relative rounded-3xl overflow-hidden bg-primary aspect-[2/1] shadow-lg">
           <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/40 z-10 p-6 flex flex-col justify-center text-white">
-            <Badge className="w-fit mb-2 bg-white/20 hover:bg-white/30 text-white border-none">New Feature</Badge>
-            <h2 className="text-2xl font-bold leading-tight mb-2">Design your<br/>Dream Room</h2>
-            <p className="text-sm opacity-90 mb-4">Chat with AI to visualize your space.</p>
+            <Badge className="w-fit mb-2 bg-white/20 hover:bg-white/30 text-white border-none">AI 신기능</Badge>
+            <h2 className="text-2xl font-bold leading-tight mb-2">꿈꾸던 공간을<br/>디자인해보세요</h2>
+            <p className="text-sm opacity-90 mb-4">AI 채팅으로 나만의 방을 시각화하세요.</p>
           </div>
           {/* Abstract circles or pattern */}
           <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-white/20 rounded-full blur-2xl"></div>
@@ -58,8 +57,8 @@ export default function Home() {
         {/* Featured Products */}
         <div>
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-bold">Recommended for You</h2>
-            <button className="text-xs text-primary font-medium">View All</button>
+            <h2 className="text-lg font-bold">회원님을 위한 추천</h2>
+            <button className="text-xs text-primary font-medium">전체보기</button>
           </div>
           
           <div className="grid grid-cols-2 gap-4">
@@ -71,10 +70,10 @@ export default function Home() {
         
         {/* Editorial Section */}
         <div className="bg-secondary/50 rounded-2xl p-6">
-          <h3 className="font-serif text-xl font-medium mb-2">Editor's Pick</h3>
-          <p className="text-sm text-muted-foreground mb-4">Curated collection for the modern minimalist home.</p>
+          <h3 className="font-serif text-xl font-medium mb-2">에디터의 픽</h3>
+          <p className="text-sm text-muted-foreground mb-4">모던 미니멀리스트 홈을 위한 엄선된 컬렉션.</p>
           <div className="h-32 bg-white rounded-xl flex items-center justify-center text-muted-foreground text-sm border border-dashed">
-            Editorial Content Area
+            에디토리얼 콘텐츠 영역
           </div>
         </div>
       </div>

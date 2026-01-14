@@ -6,37 +6,37 @@ import spaceRoomImage from '@assets/generated_images/space_themed_kids_bedroom_w
 export const products = [
   {
     id: 1,
-    name: "Roy Motion Desk",
+    name: "로이 모션 데스크",
     price: 459000,
-    category: "Home Office",
+    category: "서재",
     image: deskImage,
-    description: "A smart motion desk that adjusts to your perfect height. Essential for modern remote work.",
-    features: ["Height Adjustable", "Cable Management", "Anti-collision"]
+    description: "높이 조절이 가능한 스마트 모션 데스크입니다. 재택근무의 필수품.",
+    features: ["높이 조절", "케이블 정리", "충돌 방지 센서"]
   },
   {
     id: 2,
-    name: "Copenhagen Sofa",
+    name: "코펜하겐 소파",
     price: 890000,
-    category: "Living Room",
+    category: "거실",
     image: sofaImage,
-    description: "Nordic style fabric sofa. Water-repellent and stain-resistant.",
-    features: ["Aquaclean Fabric", "Modular Design", "High Density Foam"]
+    description: "북유럽 스타일의 패브릭 소파. 발수 및 오염 방지 기능이 포함되어 있습니다.",
+    features: ["아쿠아클린 패브릭", "모듈형 디자인", "고밀도 폼"]
   },
   {
     id: 3,
-    name: "Tinkle Kids Bed",
+    name: "팅클 키즈 침대",
     price: 320000,
-    category: "Kids Room",
+    category: "키즈룸",
     image: kidsBedImage,
-    description: "Safe and cozy bed for your little ones. Rounded corners for safety.",
-    features: ["E0 Grade Wood", "Safety Guard", "Low Height"]
+    description: "우리아이 첫 침대로 안전하고 아늑합니다. 둥근 모서리로 안전을 더했습니다.",
+    features: ["E0 등급 목재", "안전 가드", "저상형 디자인"]
   }
 ];
 
 export const spaceConcept = {
-  title: "Space Explorer's Room",
+  title: "우주 탐험가 룸",
   image: spaceRoomImage,
-  description: "A dream room for future astronauts. Features a custom arrangement of Tinkle Bed and Roy Desk in a Deep Space Navy theme.",
+  description: "미래의 우주비행사를 꿈꾸는 아이를 위한 방입니다. 팅클 침대와 로이 데스크를 딥 스페이스 네이비 테마로 구성했습니다.",
   products: [1, 3], // Desk and Kids Bed
   totalPrice: 459000 + 320000 + 150000 // Added decoration cost
 };

@@ -17,7 +17,7 @@ export function MobileLayout({ children }: { children: React.ReactNode }) {
             <a className={cn("flex flex-col items-center gap-1 w-full h-full justify-center text-xs font-medium transition-colors", 
               location === "/" ? "text-primary" : "text-muted-foreground hover:text-primary/70")}>
               <Home size={24} strokeWidth={location === "/" ? 2.5 : 2} />
-              <span>Home</span>
+              <span>홈</span>
             </a>
           </Link>
           <Link href="/chat">
@@ -30,21 +30,21 @@ export function MobileLayout({ children }: { children: React.ReactNode }) {
                   <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
                 </span>
               </div>
-              <span>AI Chat</span>
+              <span>AI 채팅</span>
             </a>
           </Link>
           <Link href="/cart">
             <a className={cn("flex flex-col items-center gap-1 w-full h-full justify-center text-xs font-medium transition-colors", 
               location === "/cart" ? "text-primary" : "text-muted-foreground hover:text-primary/70")}>
               <ShoppingCart size={24} strokeWidth={location === "/cart" ? 2.5 : 2} />
-              <span>Cart</span>
+              <span>장바구니</span>
             </a>
           </Link>
           <Link href="/profile">
             <a className={cn("flex flex-col items-center gap-1 w-full h-full justify-center text-xs font-medium transition-colors", 
               location === "/profile" ? "text-primary" : "text-muted-foreground hover:text-primary/70")}>
               <User size={24} strokeWidth={location === "/profile" ? 2.5 : 2} />
-              <span>My</span>
+              <span>마이</span>
             </a>
           </Link>
         </div>
