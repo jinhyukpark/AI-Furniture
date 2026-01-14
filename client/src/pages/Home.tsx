@@ -45,7 +45,7 @@ export default function Home() {
       <div className="p-4 space-y-8">
         {/* Hero / Promo */}
         <Link href="/chat">
-          <a className="block relative rounded-lg overflow-hidden bg-primary aspect-[2/1] shadow-lg group cursor-pointer transition-transform active:scale-[0.98]">
+          <div className="block relative rounded-lg overflow-hidden bg-primary aspect-[2/1] shadow-lg group cursor-pointer transition-transform active:scale-[0.98]">
             {/* Deep Evening Gradient Background */}
             <div className="absolute inset-0 bg-gradient-to-br from-[#1e1b4b] via-[#4c0519] to-primary z-0"></div>
             
@@ -71,7 +71,7 @@ export default function Home() {
             {/* Abstract circles or pattern - Updated for evening vibe */}
             <div className="absolute -right-4 -bottom-10 w-40 h-40 bg-orange-500/20 rounded-full blur-3xl"></div>
             <div className="absolute top-[-20%] right-[-10%] w-32 h-32 bg-purple-500/20 rounded-full blur-2xl"></div>
-          </a>
+          </div>
         </Link>
 
         {/* Featured Products */}
