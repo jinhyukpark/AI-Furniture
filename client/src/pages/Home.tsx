@@ -120,7 +120,6 @@ export default function Home() {
              </div>
              <div className="text-left">
                 <div className="text-xs font-bold text-rose-500 mb-0.5 flex items-center gap-1">
-                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse shadow-[0_0_8px_rgba(244,63,94,0.6)]" />
                   지금 놓치면 후회하는
                 </div>
                 <div className="font-bold text-slate-800 text-sm">AI 가 추천하는 큐레이팅 상품을 소개합니다.</div>
