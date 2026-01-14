@@ -75,7 +75,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
         
         {/* Carousel Controls Overlay */}
-        <div className="absolute bottom-3 left-0 right-0 z-20 flex items-center justify-between px-4">
+        <div className="absolute bottom-3 left-0 right-0 z-20 flex items-center justify-center px-4">
           <div className="flex gap-1.5 items-center">
             {heroImages.map((_, idx) => (
               <button 
@@ -88,14 +88,6 @@ export default function Home() {
                 }`}
               />
             ))}
-          </div>
-          <div className="flex gap-2">
-            <button onClick={prevSlide} className="w-8 h-8 rounded-full bg-black/20 backdrop-blur-sm text-white flex items-center justify-center hover:bg-black/40 transition-colors border border-white/10">
-              <ChevronLeft size={16} />
-            </button>
-            <button onClick={nextSlide} className="w-8 h-8 rounded-full bg-black/20 backdrop-blur-sm text-white flex items-center justify-center hover:bg-black/40 transition-colors border border-white/10">
-              <ChevronRight size={16} />
-            </button>
           </div>
         </div>
 
