@@ -142,13 +142,15 @@ export default function Home() {
           
           <div className="grid gap-4">
             {/* Card 1 */}
-            <div className="bg-white border border-slate-100 rounded-xl p-5 shadow-sm hover:shadow-md transition-all cursor-pointer group relative overflow-hidden">
-               <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                  <Sparkles size={60} className="text-slate-800" />
+            <div className="bg-white border border-slate-100 rounded-xl p-5 shadow-sm hover:shadow-md transition-all cursor-pointer group relative overflow-hidden h-48 flex flex-col justify-center">
+               {/* Background Image with Gradient Fade */}
+               <div className="absolute top-0 right-0 w-2/3 h-full">
+                  <img src={products[2].image} alt="Kids Room" className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent" />
                </div>
                
                <div className="relative z-10">
-                 <span className="inline-block px-2 py-1 bg-slate-100 rounded text-[10px] font-medium text-slate-600 mb-3">KIDS ROOM</span>
+                 <span className="inline-block px-2 py-1 bg-slate-100/80 backdrop-blur-sm rounded text-[10px] font-medium text-slate-600 mb-3">KIDS ROOM</span>
                  <h4 className="text-lg font-medium text-slate-900 mb-1 leading-snug">
                    내 아이 방 <br/>
                    <span className="font-serif italic font-bold text-2xl">34만원</span>에 완성하기
@@ -161,9 +163,11 @@ export default function Home() {
             </div>
 
             {/* Card 2 */}
-            <div className="bg-slate-900 rounded-xl p-5 shadow-sm hover:shadow-md transition-all cursor-pointer group relative overflow-hidden text-white">
-               <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                  <span className="text-6xl font-serif italic">%</span>
+            <div className="bg-slate-900 rounded-xl p-5 shadow-sm hover:shadow-md transition-all cursor-pointer group relative overflow-hidden text-white h-48 flex flex-col justify-center">
+               {/* Background Image with Gradient Fade */}
+               <div className="absolute top-0 right-0 w-2/3 h-full">
+                  <img src={products[0].image} alt="Home Office" className="w-full h-full object-cover opacity-90" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-transparent" />
                </div>
                
                <div className="relative z-10">
