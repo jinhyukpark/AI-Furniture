@@ -133,11 +133,11 @@ export default function Home() {
       </div>
 
       {/* Main Content */}
-      <div className="p-4 space-y-6">
+      <div className="p-4 pt-8">
         {/* Featured Products */}
         <div>
-          <div className="flex items-center justify-between mb-5 mt-2">
-            <h2 className="text-lg font-semibold">오늘 이런 상품은 어떠세요?</h2>
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-lg font-medium text-foreground">오늘 이런 상품은 어떠세요?</h2>
             <button className="text-xs text-primary font-medium">전체보기</button>
           </div>
           
