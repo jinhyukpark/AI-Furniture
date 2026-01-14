@@ -15,80 +15,102 @@ export function MobileLayout({ children }: { children: React.ReactNode }) {
         {/* Shadow gradient for the navbar */}
         <div className="absolute bottom-0 w-full h-48 bg-gradient-to-t from-black/5 via-transparent to-transparent pointer-events-none" />
         
-        <div className="relative h-[100px] w-full">
-            {/* Background SVG Curve Construction */}
-            <div className="absolute inset-0 flex items-end drop-shadow-sm">
-                <div className="flex-1 h-[80px] bg-white border-t border-slate-200"></div>
-                <div className="relative w-[100px] h-[80px] -mt-[1px]">
-                     {/* 
-                       Curve definition:
-                       Start at 0,0
-                       Curve down to 50,50 (control point) -> end at 100,0
-                     */}
-                     <svg width="100" height="80" viewBox="0 0 100 80" className="w-full h-full fill-white">
-                         <path d="M0,0 Q50,50 100,0 L100,80 L0,80 Z" fill="white" />
-                         <path d="M0,0 Q50,50 100,0" fill="none" stroke="#e2e8f0" strokeWidth="1" />
+        {/* Navbar Container - Increased height to ensure nothing is cut off */}
+        <div className="relative h-[80px] w-full mt-auto">
+            
+            {/* Background SVG Curve Construction - Single continuous shape approach */}
+            <div className="absolute inset-0 flex items-end drop-shadow-[0_-5px_10px_rgba(0,0,0,0.03)]">
+                {/* Left Side */}
+                <div className="flex-1 h-[60px] bg-white rounded-tl-2xl border-t border-slate-100"></div>
+                
+                {/* Center Notch */}
+                <div className="relative w-[120px] h-[60px] -mt-[1px] -mx-[0.5px]">
+                     <svg width="120" height="60" viewBox="0 0 120 60" className="w-full h-full fill-white" preserveAspectRatio="none">
+                         {/* 
+                            Smoother Notch Curve:
+                            Starts flat, gently curves down, flat at bottom, curves up.
+                         */}
+                         <path 
+                           d="M0,0 
+                              C20,0 30,0 35,5 
+                              C45,15 40,40 60,40 
+                              C80,40 75,15 85,5 
+                              C90,0 100,0 120,0 
+                              L120,60 L0,60 Z" 
+                           fill="white" 
+                         />
+                         {/* Optional border stroke to match the rest if needed, but simple shadow is often cleaner */}
                      </svg>
-                     {/* Cover the 1px gap if any overlap issues */}
-                     <div className="absolute -left-[1px] top-0 bottom-0 w-[1px] bg-white -z-10"></div>
-                     <div className="absolute -right-[1px] top-0 bottom-0 w-[1px] bg-white -z-10"></div>
+                     {/* Masking lines to fix gaps */}
+                     <div className="absolute -left-1 top-0 bottom-0 w-2 bg-white -z-10"></div>
+                     <div className="absolute -right-1 top-0 bottom-0 w-2 bg-white -z-10"></div>
                 </div>
-                <div className="flex-1 h-[80px] bg-white border-t border-slate-200"></div>
+
+                {/* Right Side */}
+                <div className="flex-1 h-[60px] bg-white rounded-tr-2xl border-t border-slate-100"></div>
             </div>
             
-            {/* Nav Items */}
-            <div className="absolute inset-0 flex items-end justify-around pb-5 px-2 pointer-events-auto">
+            {/* Nav Items Container */}
+            <div className="absolute inset-0 flex items-end justify-between px-6 pb-2 pointer-events-auto">
               
-              <Link href="/">
-                <a className={cn("flex flex-col items-center gap-1 w-14 py-1 justify-end transition-colors z-10 h-14 mb-1", 
-                  location === "/" ? "text-primary" : "text-slate-400 hover:text-slate-600")}>
-                  <Home size={24} strokeWidth={location === "/" ? 2.5 : 2} />
-                  <span className="text-[11px] font-medium">홈</span>
-                </a>
-              </Link>
+              {/* Group Left */}
+              <div className="flex gap-8 mb-1">
+                <Link href="/">
+                  <a className={cn("flex flex-col items-center gap-1 w-12 py-1 justify-end transition-colors z-10", 
+                    location === "/" ? "text-primary" : "text-slate-400 hover:text-slate-600")}>
+                    <Home size={24} strokeWidth={location === "/" ? 2.5 : 2} />
+                    <span className="text-[11px] font-medium">홈</span>
+                  </a>
+                </Link>
 
-              <Link href="/market">
-                <a className={cn("flex flex-col items-center gap-1 w-14 py-1 justify-end transition-colors z-10 h-14 mb-1", 
-                  location === "/market" ? "text-primary" : "text-slate-400 hover:text-slate-600")}>
-                  <Store size={24} strokeWidth={location === "/market" ? 2.5 : 2} />
-                  <span className="text-[11px] font-medium">마켓</span>
-                </a>
-              </Link>
+                <Link href="/market">
+                  <a className={cn("flex flex-col items-center gap-1 w-12 py-1 justify-end transition-colors z-10", 
+                    location === "/market" ? "text-primary" : "text-slate-400 hover:text-slate-600")}>
+                    <Store size={24} strokeWidth={location === "/market" ? 2.5 : 2} />
+                    <span className="text-[11px] font-medium">마켓</span>
+                  </a>
+                </Link>
+              </div>
 
-              {/* 3D AI Button - Structure changed to keep text in footer */}
-              <Link href="/chat">
-                <a className="relative flex flex-col items-center justify-end w-14 z-20 h-14 mb-1 group">
-                    {/* The floating button absolute positioned - moved up to accommodate taller footer */}
-                    <div className={cn(
-                        "absolute -top-16 w-16 h-16 rounded-full bg-gradient-to-br from-primary to-rose-600 flex items-center justify-center text-white shadow-xl shadow-primary/30 transition-transform duration-300 group-active:scale-95 border-4 border-white",
-                        location === "/chat" ? "ring-2 ring-primary/20 scale-105" : ""
-                    )}>
-                        <Sparkles size={28} strokeWidth={2.5} className="animate-pulse" />
-                    </div>
-                    
-                    {/* The text stays in the flow at the bottom */}
-                    <span className={cn("text-[11px] font-bold mt-8 transition-colors", 
-                        location === "/chat" ? "text-primary" : "text-slate-500")}>
-                        AI
-                    </span>
-                </a>
-              </Link>
+              {/* Center AI Button */}
+              <div className="relative w-14 flex flex-col items-center justify-end z-20 mb-1 group">
+                 <Link href="/chat">
+                  <a className="flex flex-col items-center">
+                      {/* Floating Button */}
+                      <div className={cn(
+                          "absolute -top-12 left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-gradient-to-br from-primary to-rose-600 flex items-center justify-center text-white shadow-lg shadow-primary/30 transition-transform duration-300 group-active:scale-95 border-[3px] border-white ring-1 ring-black/5",
+                          location === "/chat" ? "scale-105 shadow-xl shadow-primary/40" : ""
+                      )}>
+                          <Sparkles size={26} strokeWidth={2.5} className="animate-pulse" />
+                      </div>
+                      
+                      {/* Text Label */}
+                      <span className={cn("text-[11px] font-bold mt-8 transition-colors", 
+                          location === "/chat" ? "text-primary" : "text-slate-500")}>
+                          AI
+                      </span>
+                  </a>
+                 </Link>
+              </div>
 
-              <Link href="/exhibition">
-                <a className={cn("flex flex-col items-center gap-1 w-14 py-1 justify-end transition-colors z-10 h-14 mb-1", 
-                  location === "/exhibition" ? "text-primary" : "text-slate-400 hover:text-slate-600")}>
-                  <Gift size={24} strokeWidth={location === "/exhibition" ? 2.5 : 2} />
-                  <span className="text-[11px] font-medium">기획전</span>
-                </a>
-              </Link>
+              {/* Group Right */}
+              <div className="flex gap-8 mb-1">
+                <Link href="/exhibition">
+                  <a className={cn("flex flex-col items-center gap-1 w-12 py-1 justify-end transition-colors z-10", 
+                    location === "/exhibition" ? "text-primary" : "text-slate-400 hover:text-slate-600")}>
+                    <Gift size={24} strokeWidth={location === "/exhibition" ? 2.5 : 2} />
+                    <span className="text-[11px] font-medium">기획전</span>
+                  </a>
+                </Link>
 
-              <Link href="/profile">
-                <a className={cn("flex flex-col items-center gap-1 w-14 py-1 justify-end transition-colors z-10 h-14 mb-1", 
-                  location === "/profile" ? "text-primary" : "text-slate-400 hover:text-slate-600")}>
-                  <User size={24} strokeWidth={location === "/profile" ? 2.5 : 2} />
-                  <span className="text-[11px] font-medium">마이</span>
-                </a>
-              </Link>
+                <Link href="/profile">
+                  <a className={cn("flex flex-col items-center gap-1 w-12 py-1 justify-end transition-colors z-10", 
+                    location === "/profile" ? "text-primary" : "text-slate-400 hover:text-slate-600")}>
+                    <User size={24} strokeWidth={location === "/profile" ? 2.5 : 2} />
+                    <span className="text-[11px] font-medium">마이</span>
+                  </a>
+                </Link>
+              </div>
               
             </div>
         </div>
