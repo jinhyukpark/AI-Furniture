@@ -362,27 +362,27 @@ export default function Home() {
         </div>
 
         {/* Quick Links: Store & Refurb */}
-        <div className="flex justify-center gap-16 pb-12 mt-8">
+        <div className="grid grid-cols-2 gap-3 px-2 pb-8 mt-6">
           <Link href="/store">
-            <div className="flex flex-col items-center gap-3 cursor-pointer group">
-              <div className="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 group-hover:bg-slate-200 transition-colors">
-                <MapPin size={28} strokeWidth={1.5} />
+            <div className="bg-slate-50 rounded-xl p-4 flex flex-col items-center justify-center gap-2 cursor-pointer hover:bg-slate-100 transition-colors h-28 border border-slate-100">
+              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-slate-700 shadow-sm mb-1">
+                <MapPin size={18} strokeWidth={2} />
               </div>
               <div className="text-center">
-                <div className="text-sm font-medium text-slate-900">Store</div>
-                <div className="text-xs text-slate-500 mt-0.5">매장안내</div>
+                <div className="text-sm font-bold text-slate-900">Store</div>
+                <div className="text-[10px] text-slate-500">매장안내</div>
               </div>
             </div>
           </Link>
           
           <Link href="/refurb">
-            <div className="flex flex-col items-center gap-3 cursor-pointer group">
-              <div className="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 group-hover:bg-slate-200 transition-colors">
-                <Tag size={28} strokeWidth={1.5} />
+            <div className="bg-slate-50 rounded-xl p-4 flex flex-col items-center justify-center gap-2 cursor-pointer hover:bg-slate-100 transition-colors h-28 border border-slate-100">
+              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-slate-700 shadow-sm mb-1">
+                <Tag size={18} strokeWidth={2} />
               </div>
               <div className="text-center">
-                <div className="text-sm font-medium text-slate-900">Refurb</div>
-                <div className="text-xs text-slate-500 mt-0.5">전시품 판매</div>
+                <div className="text-sm font-bold text-slate-900">Refurb</div>
+                <div className="text-[10px] text-slate-500">전시품 판매</div>
               </div>
             </div>
           </Link>
