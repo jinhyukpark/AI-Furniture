@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { motion, AnimatePresence } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function ProductDetail() {
   const [match, params] = useRoute("/product/:id");
@@ -14,6 +15,7 @@ export default function ProductDetail() {
   const { toast } = useToast();
   const [isPicked, setIsPicked] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
+  const [activeTab, setActiveTab] = useState("detail");
   
   const product = products.find(p => p.id === Number(params?.id));
 
@@ -78,14 +80,14 @@ export default function ProductDetail() {
         </AnimatePresence>
 
         {/* Header (Floating) */}
-        <div className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center p-4 max-w-md mx-auto">
+        <div className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center p-4 max-w-md mx-auto pointer-events-none">
           <button 
             onClick={() => window.history.back()}
-            className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-md shadow-sm flex items-center justify-center text-foreground hover:bg-white transition-colors"
+            className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-md shadow-sm flex items-center justify-center text-foreground hover:bg-white transition-colors pointer-events-auto"
           >
             <ArrowLeft size={20} />
           </button>
-          <div className="flex gap-2">
+          <div className="flex gap-2 pointer-events-auto">
             <button 
               onClick={handlePick}
               className={`w-10 h-10 rounded-full bg-white/80 backdrop-blur-md shadow-sm flex items-center justify-center transition-colors ${isPicked ? "text-primary bg-primary/10" : "text-foreground hover:bg-white"}`}
@@ -108,11 +110,11 @@ export default function ProductDetail() {
         </div>
 
         {/* Content Container */}
-        <div className="relative -mt-6 bg-white rounded-t-2xl px-6 pt-8 pb-6 shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
+        <div className="relative -mt-6 bg-white rounded-t-2xl px-0 pt-8 pb-6 shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
           {/* Handle bar */}
           <div className="w-10 h-1 bg-slate-200 rounded-full mx-auto mb-6"></div>
 
-          <div className="mb-6">
+          <div className="px-6 mb-6">
             <div className="text-sm text-muted-foreground font-medium mb-1">{product.category}</div>
             <h1 className="text-2xl font-bold mb-2">{product.name}</h1>
             <div className="flex items-baseline gap-2">
@@ -122,59 +124,126 @@ export default function ProductDetail() {
           </div>
 
           {/* AI Banner */}
-          <div 
-            onClick={handleAskAI}
-            className="mb-8 p-4 rounded-xl bg-gradient-to-r from-violet-50 to-indigo-50 border border-indigo-100 flex items-center justify-between cursor-pointer active:scale-[0.98] transition-transform"
-          >
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm text-primary">
-                <Sparkles size={20} />
+          <div className="px-6 mb-8">
+            <div 
+              onClick={handleAskAI}
+              className="p-4 rounded-xl bg-gradient-to-r from-violet-50 to-indigo-50 border border-indigo-100 flex items-center justify-between cursor-pointer active:scale-[0.98] transition-transform"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm text-primary">
+                  <Sparkles size={20} />
+                </div>
+                <div>
+                  <div className="text-sm font-bold text-indigo-900">AI에게 물어보기</div>
+                  <div className="text-xs text-indigo-600">이 가구가 우리 집에 어울릴까요?</div>
+                </div>
               </div>
-              <div>
-                <div className="text-sm font-bold text-indigo-900">AI에게 물어보기</div>
-                <div className="text-xs text-indigo-600">이 가구가 우리 집에 어울릴까요?</div>
-              </div>
+              <ChevronRight size={18} className="text-indigo-400" />
             </div>
-            <ChevronRight size={18} className="text-indigo-400" />
           </div>
 
-          {/* Description */}
-          <div className="space-y-6">
-            <section>
-              <h3 className="font-bold mb-3 text-lg">상품 정보</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                {product.description}
-              </p>
-            </section>
+          {/* Sticky Tabs */}
+          <Tabs defaultValue="detail" className="w-full" onValueChange={setActiveTab}>
+            <div className="sticky top-[60px] z-40 bg-white border-b border-slate-100">
+              <TabsList className="w-full h-12 bg-transparent p-0 justify-start overflow-x-auto no-scrollbar scrollbar-hide">
+                <TabsTrigger 
+                  value="detail" 
+                  className="flex-1 min-w-[80px] h-full rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:text-primary data-[state=active]:shadow-none bg-transparent font-medium text-xs text-muted-foreground"
+                >
+                  상세정보
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="options" 
+                  className="flex-1 min-w-[60px] h-full rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:text-primary data-[state=active]:shadow-none bg-transparent font-medium text-xs text-muted-foreground"
+                >
+                  옵션
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="tips" 
+                  className="flex-1 min-w-[80px] h-full rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:text-primary data-[state=active]:shadow-none bg-transparent font-medium text-xs text-muted-foreground"
+                >
+                  인테리어 팁
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="reviews" 
+                  className="flex-1 min-w-[60px] h-full rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:text-primary data-[state=active]:shadow-none bg-transparent font-medium text-xs text-muted-foreground"
+                >
+                  상품평
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="qna" 
+                  className="flex-1 min-w-[60px] h-full rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:text-primary data-[state=active]:shadow-none bg-transparent font-medium text-xs text-muted-foreground"
+                >
+                  Q&A
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="shipping" 
+                  className="flex-1 min-w-[100px] h-full rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:text-primary data-[state=active]:shadow-none bg-transparent font-medium text-xs text-muted-foreground"
+                >
+                  배송/취소/반품
+                </TabsTrigger>
+              </TabsList>
+            </div>
 
-            <section>
-              <h3 className="font-bold mb-3 text-lg">주요 특징</h3>
-              <ul className="space-y-2">
-                {product.features.map((feature, i) => (
-                  <li key={i} className="flex items-center gap-2 text-sm">
-                    <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                      <Check size={12} strokeWidth={3} />
+            <div className="px-6 py-6 min-h-[300px]">
+              <TabsContent value="detail" className="mt-0 space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-300">
+                <section>
+                  <h3 className="font-bold mb-3 text-lg">상품 정보</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {product.description}
+                  </p>
+                </section>
+
+                <section>
+                  <h3 className="font-bold mb-3 text-lg">주요 특징</h3>
+                  <ul className="space-y-2">
+                    {product.features.map((feature, i) => (
+                      <li key={i} className="flex items-center gap-2 text-sm">
+                        <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                          <Check size={12} strokeWidth={3} />
+                        </div>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+                
+                {/* Dummy Specs */}
+                <section className="pt-4 border-t">
+                  <div className="grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <span className="text-muted-foreground block mb-1">소재</span>
+                      <span className="font-medium">Premium Wood / Fabric</span>
                     </div>
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-            
-            {/* Dummy Specs */}
-            <section className="pt-4 border-t">
-              <div className="grid grid-cols-2 gap-4 text-sm">
-                <div>
-                  <span className="text-muted-foreground block mb-1">소재</span>
-                  <span className="font-medium">Premium Wood / Fabric</span>
-                </div>
-                <div>
-                  <span className="text-muted-foreground block mb-1">배송</span>
-                  <span className="font-medium">일룸 전문 시공 배송</span>
-                </div>
-              </div>
-            </section>
-          </div>
+                    <div>
+                      <span className="text-muted-foreground block mb-1">배송</span>
+                      <span className="font-medium">일룸 전문 시공 배송</span>
+                    </div>
+                  </div>
+                </section>
+              </TabsContent>
+              
+              <TabsContent value="options" className="mt-0 py-8 text-center text-muted-foreground animate-in fade-in slide-in-from-bottom-2">
+                옵션 선택 정보가 여기에 표시됩니다.
+              </TabsContent>
+              
+              <TabsContent value="tips" className="mt-0 py-8 text-center text-muted-foreground animate-in fade-in slide-in-from-bottom-2">
+                이 가구와 어울리는 인테리어 팁을 확인하세요.
+              </TabsContent>
+              
+              <TabsContent value="reviews" className="mt-0 py-8 text-center text-muted-foreground animate-in fade-in slide-in-from-bottom-2">
+                구매 고객들의 생생한 후기 (준비중)
+              </TabsContent>
+              
+              <TabsContent value="qna" className="mt-0 py-8 text-center text-muted-foreground animate-in fade-in slide-in-from-bottom-2">
+                상품에 대한 궁금한 점을 문의하세요.
+              </TabsContent>
+              
+              <TabsContent value="shipping" className="mt-0 py-8 text-center text-muted-foreground animate-in fade-in slide-in-from-bottom-2">
+                배송 및 교환/반품 안내 정보입니다.
+              </TabsContent>
+            </div>
+          </Tabs>
         </div>
       </div>
 
