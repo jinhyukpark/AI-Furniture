@@ -6,38 +6,17 @@ import { Search, Bell, Moon, Star, ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "wouter";
 
-const CATEGORIES = ["전체", "침실", "거실", "키즈룸", "서재", "주방"];
-
 export default function Home() {
-  const [activeCategory, setActiveCategory] = useState("전체");
-
   return (
     <MobileLayout>
       {/* Header */}
       <header className="sticky top-0 bg-white/80 backdrop-blur-md z-40 px-4 py-3 border-b">
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center justify-between">
           <h1 className="text-2xl font-bold tracking-tight text-primary">iloom<span className="text-foreground text-lg font-normal">.ai</span></h1>
           <div className="flex gap-3 text-muted-foreground">
             <Search size={22} />
             <Bell size={22} />
           </div>
-        </div>
-        
-        {/* Categories */}
-        <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide -mx-4 px-4">
-          {CATEGORIES.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
-                activeCategory === cat 
-                  ? "bg-primary text-white shadow-md shadow-primary/20" 
-                  : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
         </div>
       </header>
 
