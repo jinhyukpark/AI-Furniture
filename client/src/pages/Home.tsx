@@ -57,7 +57,7 @@ export default function Home() {
             <div className="absolute top-1/2 right-4 w-1 h-1 bg-white/90 rounded-full animate-twinkle" style={{ animationDelay: "0.5s" }}></div>
 
             {/* Shooting Star */}
-            <div className="absolute top-[-10px] right-[20px] w-20 h-[1px] bg-gradient-to-l from-transparent via-white to-transparent animate-shooting-star opacity-0 rotate-[-45deg]"></div>
+            <div className="absolute top-[20px] right-[20px] w-32 h-[3px] bg-gradient-to-l from-transparent via-white to-transparent animate-shooting-star opacity-0"></div>
             
             {/* Content */}
             <div className="relative z-10 p-6 flex flex-col justify-center text-white h-full">

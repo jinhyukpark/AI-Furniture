@@ -125,20 +125,20 @@
 
 @keyframes shooting-star {
   0% {
-    transform: translateX(0) translateY(0) rotate(-45deg) scale(0);
+    transform: translateX(0) translateY(0) rotate(200deg) scale(0.5);
     opacity: 0;
   }
-  5% {
+  10% {
     opacity: 1;
-    transform: translateX(-50px) translateY(50px) rotate(-45deg) scale(1);
+    transform: translateX(-100px) translateY(40px) rotate(200deg) scale(1);
   }
-  15% {
+  20% {
     opacity: 0;
-    transform: translateX(-100px) translateY(100px) rotate(-45deg) scale(0.5);
+    transform: translateX(-200px) translateY(80px) rotate(200deg) scale(0.5);
   }
   100% {
     opacity: 0;
-    transform: translateX(-100px) translateY(100px) rotate(-45deg) scale(0.5);
+    transform: translateX(-200px) translateY(80px) rotate(200deg) scale(0.5);
   }
 }
 
