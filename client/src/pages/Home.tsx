@@ -123,7 +123,7 @@ export default function Home() {
                   <span className="inline-block w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse shadow-[0_0_8px_rgba(244,63,94,0.6)]" />
                   지금 놓치면 절대안되는 !
                 </div>
-                <div className="font-bold text-slate-800 text-sm">고객님이 좋아할만한 큐레이팅 상품들을 소개합니다.</div>
+                <div className="font-bold text-slate-800 text-sm">박진혁님이 좋아할만한 큐레이팅 상품들을 소개합니다.</div>
              </div>
           </div>
           <div className="w-8 h-8 rounded-full bg-white shadow-sm border border-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all relative z-10">
