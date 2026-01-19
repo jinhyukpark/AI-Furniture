@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { MobileLayout } from "@/components/MobileLayout";
-import { Send, Sparkles, Image as ImageIcon, FileText, Plus, X, Bookmark, ArrowRight, ArrowLeft } from "lucide-react";
+import { Send, Sparkles, Image as ImageIcon, FileText, Plus, X, Bookmark, ArrowRight, ArrowLeft, Heart } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
@@ -11,7 +11,7 @@ type Message = {
   id: string;
   role: "user" | "assistant";
   content: string;
-  type?: "text" | "suggestion" | "quotation" | "visual";
+  type?: "text" | "suggestion" | "quotation" | "visual" | "product";
   data?: any;
 };
 
@@ -99,6 +99,16 @@ export default function ChatAssistant() {
           role: "assistant",
           content: "창문을 등지기보다는 측면에 책상을 배치하면 눈의 피로를 줄일 수 있어요. 침대는 문에서 대각선 방향이 가장 안정적입니다.",
           type: "text"
+        };
+      } else if (lowerInput.includes("추천") || lowerInput.includes("제품") || lowerInput.includes("상품")) {
+        // Product Recommendation Logic
+        const recommendedProduct = products[2]; // Example: Kids Bed
+        aiResponse = {
+          id: (Date.now() + 1).toString(),
+          role: "assistant",
+          content: "고객님의 취향과 공간에 어울리는 이 제품은 어떠세요? 따뜻한 감성의 디자인으로 인기가 많습니다.",
+          type: "product",
+          data: recommendedProduct
         };
       } else {
         aiResponse.content = "좋은 질문이네요! 더 구체적으로 말씀해주시면 제가 3D 시뮬레이션이나 상세 견적을 도와드릴 수 있어요.";
@@ -249,6 +259,30 @@ export default function ChatAssistant() {
                       <div className="p-3 bg-white">
                         <div className="font-bold text-xs text-slate-800 mb-1">{msg.data.title}</div>
                         <div className="text-[10px] text-slate-500 line-clamp-2 leading-relaxed">{msg.data.description}</div>
+                      </div>
+                    </div>
+                  )}
+                  {/* Product Recommendation Card */}
+                  {msg.type === "product" && (
+                    <div className="mt-3 bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm max-w-[240px]">
+                      <div className="aspect-square bg-slate-100 relative">
+                        <img src={msg.data.image} alt={msg.data.name} className="w-full h-full object-cover" />
+                        <button className="absolute top-2 right-2 w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-slate-400 hover:text-red-500 transition-colors shadow-sm">
+                          <Heart size={16} />
+                        </button>
+                      </div>
+                      <div className="p-3">
+                        <div className="text-xs text-slate-500 mb-1">{msg.data.category}</div>
+                        <h4 className="font-bold text-sm text-slate-900 mb-2">{msg.data.name}</h4>
+                        <div className="flex items-center justify-between">
+                          <span className="font-bold text-primary">{msg.data.price.toLocaleString()}원</span>
+                          <button 
+                            className="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs px-2.5 py-1.5 rounded-lg font-medium transition-colors"
+                            onClick={() => setLocation(`/product/${msg.data.id}`)}
+                          >
+                            자세히보기
+                          </button>
+                        </div>
                       </div>
                     </div>
                   )}
